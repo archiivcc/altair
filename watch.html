@@ -312,9 +312,6 @@
                         </div>
                         <div class="p-3 md:p-4">
                             <div class="flex items-center justify-between text-xs md:text-sm text-gray-400">
-                                <div class="hidden lg:block">
-                                    <a href="https://ko-fi.com/archiiv" target="_blank" class="text-purple-400 hover:text-purple-300 transition-colors">Support me here</a>
-                                </div>
                                 <div class="text-center mx-auto animated-text" x-show="content?.runtime || content?.episode_run_time">
                                     <span>If you start now, it'll end at </span>
                                     <span x-text="(() => {
@@ -323,9 +320,6 @@
                                         const endTime = new Date(now.getTime() + runtime * 60000);
                                         return endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                                     })()"></span>
-                                </div>
-                                <div class="hidden lg:block">
-                                    <a href="https://ko-fi.com/archiiv" target="_blank" class="text-purple-400 hover:text-purple-300 transition-colors">Support me here</a>
                                 </div>
                             </div>
                         </div>
