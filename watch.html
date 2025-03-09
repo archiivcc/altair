@@ -3,24 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watch - Nova</title>
-    <meta name="description" content="Click, watch, enjoy. Nova breaks down the paywall, ensuring that quality content is accessible to everyone.">
-    <meta name="keywords" content="movies, tv shows, streaming, free movies, watch online, nova streaming">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="ambrosial">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://novastream.top">
-    <meta property="og:title" content="Nova">
-    <meta property="og:description" content="Click, watch, enjoy. Nova breaks down the paywall, ensuring that quality content is accessible to everyone.">
-    <meta property="og:image:width" content="300">
-    <meta property="og:image:height" content="300">
-    <meta property="og:image" content="https://raw.githubusercontent.com/ambr0sial/nova/main/logo.png">
-    <meta property="twitter:card" content="summary">
-    <meta property="twitter:url" content="https://novastream.top">
-    <meta property="twitter:title" content="Nova - Watch Movies & TV Shows">
-    <meta property="twitter:description" content="Click, watch, enjoy. Nova breaks down the paywall, ensuring that quality content is accessible to everyone.">
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/ambr0sial/nova/main/logo.png">
-    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/ambr0sial/nova/main/logo.png">
+    <title>Watch - Altair</title>
+    <meta name="description" content="Click, watch, enjoy. Altair breaks down the paywall, ensuring that quality content is accessible to everyone.">
+    <meta name="keywords" content="free movies, free streaming, watch movies online, free tv shows, streaming service, watch movies free, online streaming, free movies online, free series online">
+    <meta name="author" content="archiiv">
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Altair">
+    <meta property="og:description" content="Click, watch, enjoy. Altair breaks down the paywall, ensuring that quality content is accessible to everyone.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/archiivcc/altair/main/logo.png">
+    <meta property="twitter:card" content="summary_large_image"/>
+    <meta property="twitter:title" content="Altair - Watch Movies & TV Shows">
+    <meta property="twitter:description" content="Click, watch, enjoy. Altair breaks down the paywall, ensuring that quality content is accessible to everyone.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/archiivcc/altair/main/logo.png">
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/archiivcc/altair/main/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.3/cdn.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -181,28 +176,12 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-8">
                     <a href="/" class="flex items-center space-x-3">
-                        <img src="logo.png" alt="Nova Logo" class="h-8 w-8 md:h-10 md:w-10">
-                        <span class="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-800">Nova</span>
+                        <img src="logo.png" alt="Altair Logo" class="h-8 w-8 md:h-10 md:w-10">
+                        <span class="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-800">Altair</span>
                 </a>
                     <div class="hidden md:flex space-x-6">
-                        <a href="/" class="nav-link flex items-center">
-                            <span>Browse</span>
-                        </a>
-                        <button @click="showWatchLater = true" class="nav-link flex items-center space-x-2">
-                            <span>Watch Later</span>
-                            <span x-show="watchLaterCount > 0" 
-                                  class="bg-purple-600 text-white text-xs flex items-center justify-center rounded-full w-6 h-6" 
-                                  x-text="watchLaterCount"></span>
-                        </button>
-                        <a href="https://github.com/ambr0sial/nova" target="_blank" class="nav-link flex items-center">
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://ko-fi.com/ambrosial" target="_blank" class="nav-link flex items-center">
-                            <span>Ko-Fi</span>
-                </a>
-                        <a href="https://discord.gg/s9kUZw7CqP" target="_blank" class="nav-link flex items-center">
-                            <span>Discord</span>
-                        </a>
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="https://github.com/archiivcc/altair" target="_blank" class="nav-link">GitHub</a>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
@@ -239,9 +218,9 @@
                               class="bg-purple-600 text-white text-xs flex items-center justify-center rounded-full w-6 h-6" 
                               x-text="watchLaterCount"></span>
                     </button>
-                    <a href="https://github.com/ambr0sial/nova" target="_blank" 
+                    <a href="https://github.com/archiivcc/altair" target="_blank" 
                        class="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">GitHub</a>
-                    <a href="https://ko-fi.com/ambrosial" target="_blank" 
+                    <a href="https://ko-fi.com/archiiv" target="_blank" 
                        class="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">Ko-Fi</a>
                     <a href="https://discord.gg/s9kUZw7CqP" target="_blank" 
                        class="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">Discord</a>
@@ -334,7 +313,7 @@
                         <div class="p-3 md:p-4">
                             <div class="flex items-center justify-between text-xs md:text-sm text-gray-400">
                                 <div class="hidden lg:block">
-                                    <a href="https://ko-fi.com/ambrosial" target="_blank" class="text-purple-400 hover:text-purple-300 transition-colors">Support me here</a>
+                                    <a href="https://ko-fi.com/archiiv" target="_blank" class="text-purple-400 hover:text-purple-300 transition-colors">Support me here</a>
                                 </div>
                                 <div class="text-center mx-auto animated-text" x-show="content?.runtime || content?.episode_run_time">
                                     <span>If you start now, it'll end at </span>
@@ -346,7 +325,7 @@
                                     })()"></span>
                                 </div>
                                 <div class="hidden lg:block">
-                                    <a href="https://ko-fi.com/ambrosial" target="_blank" class="text-purple-400 hover:text-purple-300 transition-colors">Support me here</a>
+                                    <a href="https://ko-fi.com/archiiv" target="_blank" class="text-purple-400 hover:text-purple-300 transition-colors">Support me here</a>
                                 </div>
                             </div>
                         </div>
@@ -860,7 +839,7 @@
     <div class="container mx-auto px-6 py-12">
         <div class="text-center mb-8">
             <h2 class="text-2xl font-bold text-gray-300">Content Available From</h2>
-            <p class="text-gray-400 mt-2">Nova aggregates content from various premium streaming platforms</p>
+            <p class="text-gray-400 mt-2">Altair aggregates content from various premium streaming platforms</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 items-center justify-items-center opacity-80">
             <a href="https://netflix.com" target="_blank" class="transform transition-transform hover:scale-105">
@@ -899,13 +878,13 @@
     <footer class="text-gray-400 py-6 mt-12">
         <div class="container mx-auto text-center">
             <p class="text-sm">
-                Nova doesn't store files, but provides links to external services. Legal issues should be discussed with file providers and hosts. The files provided by video providers are not covered by Nova.
+                Altair doesn't store files, but provides links to external services. Legal issues should be discussed with file providers and hosts. The files provided by video providers are not covered by Altair.
             </p>
             <p class="mt-2 text-xs">
-                Made with ❤ by Ambrosial. 05/03/25
+                Made with ❤ by archiiv. 05/03/25
             </p>
             <p class="mt-2 text-xs">
-                <a href="mailto:contact.novastream@gmail.com" class="text-purple-400 hover:text-purple-300 transition-colors">contact.novastream@gmail.com</a>
+                <a href="mailto:chase@archiiv.org" class="text-purple-400 hover:text-purple-300 transition-colors">chase@archiiv.org</a>
             </p>
         </div>
     </footer>
