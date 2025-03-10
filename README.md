@@ -65,6 +65,10 @@ Filtered search for better content discovery
 </div>
 
 
+## What We Offer That Nova Doesn't
+
+- Favoriting System
+
 ## 🤝 Contributing
 
 Contributions are always welcome! Feel free to open pull requests to improve Altair.
