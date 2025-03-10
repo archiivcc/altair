@@ -248,6 +248,21 @@
         .settings-icon:hover {
             transform: rotate(180deg);
         }
+
+        .animate-fade-out {
+            animation: fadeOut 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen" x-data="app()" 
@@ -356,10 +371,6 @@
                     </a>
                     <a href="https://github.com/archiivcc/altair" target="_blank" 
                        class="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">GitHub</a>
-                    <a href="https://ko-fi.com/archiiv" target="_blank" 
-                       class="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">Ko-Fi</a>
-                    <a href="https://discord.gg/s9kUZw7CqP" target="_blank" 
-                       class="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">Discord</a>
                 </div>
             </div>
         </div>
@@ -477,25 +488,41 @@
                         <template x-if="selectedGenre">
                             <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm flex items-center gap-2">
                                 <span x-text="getGenreName(selectedGenre)"></span>
-                                <button @click="selectedGenre = ''; applyFilters()" class="hover:text-gray-300">×</button>
+                                <button @click="selectedGenre = ''; applyFilters()" class="hover:text-gray-300 focus:outline-none transition-colors duration-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hover:scale-110 transform transition-transform duration-200 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
                             </span>
                         </template>
                         <template x-if="minRating">
                             <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm flex items-center gap-2">
                                 <span x-text="minRating + '+ ⭐'"></span>
-                                <button @click="minRating = ''; applyFilters()" class="hover:text-gray-300">×</button>
+                                <button @click="minRating = ''; applyFilters()" class="hover:text-gray-300 focus:outline-none transition-colors duration-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hover:scale-110 transform transition-transform duration-200 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
                             </span>
                         </template>
                         <template x-if="yearRange">
                             <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm flex items-center gap-2">
                                 <span x-text="getYearRangeName(yearRange)"></span>
-                                <button @click="yearRange = ''; applyFilters()" class="hover:text-gray-300">×</button>
+                                <button @click="yearRange = ''; applyFilters()" class="hover:text-gray-300 focus:outline-none transition-colors duration-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hover:scale-110 transform transition-transform duration-200 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
                             </span>
                         </template>
                         <template x-if="selectedLanguage">
                             <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm flex items-center gap-2">
                                 <span x-text="getLanguageName(selectedLanguage)"></span>
-                                <button @click="selectedLanguage = ''; applyFilters()" class="hover:text-gray-300">×</button>
+                                <button @click="selectedLanguage = ''; applyFilters()" class="hover:text-gray-300 focus:outline-none transition-colors duration-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hover:scale-110 transform transition-transform duration-200 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
                             </span>
                         </template>
                         <template x-if="hasActiveFilters">
@@ -575,6 +602,58 @@
                     </svg>
                 </button>
             </div>
+
+            <!-- favorites section -->
+            <template x-if="getFavorites(currentTab).length > 0">
+                <div class="mt-32 mb-24">
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-800">Your Favorites</h2>
+                        <a href="settings.html#favorites" class="text-purple-400 hover:text-purple-500 transition-colors">
+                            Manage Favorites
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        <template x-for="item in getFavorites(currentTab)" :key="item.id">
+                            <div class="relative card-hover" 
+                                 x-data="{ isRemoving: false }"
+                                 :class="{ 'animate-fade-out': isRemoving }"
+                                 @animationend="if(isRemoving) removeFromFavorites(item)"
+                                 @contextmenu.prevent="
+                                $store.contextMenu = {
+                                    show: true,
+                                    x: $event.clientX,
+                                    y: $event.clientY,
+                                    item: item
+                                }">
+                                <a :href="'watch.html?id=' + item.id + '&type=' + (item.media_type === 'movie' ? 'Movie' : 'TV')"
+                                   class="block rounded-lg overflow-hidden bg-gray-800 aspect-[2/3]">
+                                    <div class="relative h-full">
+                                        <img :src="'https://image.tmdb.org/t/p/w500' + item.poster_path" 
+                                             :alt="item.title || item.name"
+                                             class="w-full h-full object-cover"
+                                             @error="event => {
+                                                    event.target.src = '/logo.png';
+                                                    event.target.classList.remove('object-cover');
+                                                    event.target.classList.add('object-contain');
+                                                }" />
+                                        <div class="card-overlay absolute inset-0 flex flex-col justify-end p-2 sm:p-3 md:p-4">
+                                            <h3 class="text-sm md:text-lg font-semibold" x-text="item.title || item.name"></h3>
+                                            <p class="text-gray-400 text-xs md:text-sm mt-1" x-text="'⭐ ' + (item.vote_average || 'N/A') + '/10'"></p>
+                                            <p class="text-gray-300 text-xs md:text-sm mt-2 hidden sm:block" x-text="item.overview ? (item.overview.substring(0, 100) + '...') : 'No overview available'"></p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <button @click.stop="isRemoving = true"
+                                        class="absolute top-2 right-2 p-1.5 md:p-2 bg-gray-900 bg-opacity-75 rounded-full hover:bg-amber-600 transition-all duration-300 text-amber-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
         </div>
     </div>
 
@@ -1001,6 +1080,12 @@
                 sortBy: 'popularity.desc',
                 yearRange: '',
                 selectedLanguage: '',
+                favorites: JSON.parse(localStorage.getItem('favorites') || '[]'),
+
+                getFavorites(type) {
+                    const mediaType = type === 'movies' ? 'movie' : 'tv';
+                    return this.favorites.filter(item => item.media_type === mediaType);
+                },
 
                 async init() {
                     const savedItems = localStorage.getItem('watchLater');
@@ -1308,6 +1393,14 @@
             this.language = newLanguage;
             localStorage.setItem('selectedLanguage', newLanguage);
             this.fetchContent();
+        },
+
+        removeFromFavorites(item) {
+            this.favorites = this.favorites.filter(fav => fav.id !== item.id);
+            localStorage.setItem('favorites', JSON.stringify(this.favorites));
+            window.dispatchEvent(new CustomEvent('show-toast', { 
+                detail: { message: 'Removed from favorites' }
+            }));
         }
     }
 }

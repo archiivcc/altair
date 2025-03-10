@@ -238,7 +238,11 @@
             <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6 lg:p-12">
                 <!-- title logo -->
                 <div class="mb-4" x-show="content?.images?.logos?.length > 0">
-                    <img :src="'https://image.tmdb.org/t/p/w500' + content.images.logos[0].file_path" 
+                    <img :src="'https://image.tmdb.org/t/p/w500' + (content.images.logos.find(logo => 
+                            logo.iso_639_1 === content.original_language || 
+                            (!logo.iso_639_1 && content.original_language === 'en') || 
+                            logo.iso_639_1 === 'en'
+                        )?.file_path || content.images.logos[0].file_path)" 
                          class="max-h-24 md:max-h-32 w-auto" 
                          :alt="content?.title || content?.name + ' logo'">
                 </div>
@@ -291,13 +295,22 @@
                                     @load="handleProviderLoad()"
                                     allowfullscreen>
                             </iframe>
-                            <button @click="toggleWatchLater(content)" 
-                                    class="absolute top-2 right-2 p-1.5 md:p-2 bg-gray-900 bg-opacity-75 rounded-full hover:bg-purple-600 transition-colors duration-300"
-                                    :class="isInWatchLater(content) ? 'text-purple-400' : 'text-white'">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
-                                </svg>
-                            </button>
+                            <div class="absolute top-2 right-2 flex space-x-2">
+                                <button @click="toggleFavorite(content)" 
+                                        class="p-1.5 md:p-2 bg-gray-900 bg-opacity-75 rounded-full hover:bg-amber-600 transition-colors duration-300"
+                                        :class="isInFavorites(content) ? 'text-amber-400' : 'text-white'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" :fill="isInFavorites(content) ? 'currentColor' : 'none'" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                    </svg>
+                                </button>
+                                <button @click="toggleWatchLater(content)" 
+                                        class="p-1.5 md:p-2 bg-gray-900 bg-opacity-75 rounded-full hover:bg-purple-600 transition-colors duration-300"
+                                        :class="isInWatchLater(content) ? 'text-purple-400' : 'text-white'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+                                    </svg>
+                                </button>
+                            </div>
                             <!-- provider down message -->
                             <div x-show="showDownMessage" 
                                  class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-90">
@@ -321,6 +334,13 @@
                                         return endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                                     })()"></span>
                                 </div>
+                                <button @click="toggleFavorite(content)" 
+                                        class="p-1.5 md:p-2 bg-gray-700 rounded-full hover:bg-amber-600 transition-colors duration-300"
+                                        :class="isInFavorites(content) ? 'text-amber-400' : 'text-white'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5" :fill="isInFavorites(content) ? 'currentColor' : 'none'" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1068,6 +1088,17 @@
     </script>
 
     <script>
+        window.addEventListener('appearance-changed', () => {
+            const particlesEl = document.getElementById('particles-js');
+            if (localStorage.getItem('showParticles') === 'false') {
+                particlesEl.style.display = 'none';
+            } else {
+                particlesEl.style.display = 'block';
+            }
+        });
+    </script>
+
+    <script>
         function app() {
             return {
                 apiKey: '1070730380f5fee0d87cf0382670b255',
@@ -1090,6 +1121,27 @@
                 viewMode: 'grid',
                 seasonData: null,
                 similarContent: [],
+                loading: true,
+                favorites: [],
+
+                toggleFavorite(item) {
+                    if (!item) return;
+                    
+                    const index = this.favorites.findIndex(f => f.id === item.id);
+                    if (index === -1) {
+                        this.favorites.push({
+                            ...item,
+                            media_type: this.contentType
+                        });
+                    } else {
+                        this.favorites.splice(index, 1);
+                    }
+                    localStorage.setItem('favorites', JSON.stringify(this.favorites));
+                },
+
+                isInFavorites(item) {
+                    return item && this.favorites.some(f => f.id === item.id);
+                },
 
                 async init() {
                     const savedItems = localStorage.getItem('watchLater');
@@ -1098,9 +1150,12 @@
                         this.watchLaterCount = this.watchLaterItems.length;
                     }
 
+                    // Load favorites from localStorage
+                    this.favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
                     const urlParams = new URLSearchParams(window.location.search);
                     this.contentId = urlParams.get('id');
-                    this.contentType = urlParams.get('type');
+                    this.contentType = urlParams.get('type')?.toLowerCase();
                     this.isShow = this.contentType === 'tv';
                     this.selectedTorrentSeason = 1;
 
@@ -1109,85 +1164,131 @@
                         this.updateVideoUrl();
                         this.fetchTorrentInfo();
                     }
+
+                    // Listen for navigation events
+                    window.addEventListener('popstate', () => {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const newContentId = urlParams.get('id');
+                        const newContentType = urlParams.get('type')?.toLowerCase();
+                        
+                        if (newContentId !== this.contentId || newContentType !== this.contentType) {
+                            this.contentId = newContentId;
+                            this.contentType = newContentType;
+                            this.isShow = this.contentType === 'tv';
+                            this.content = null;
+                            this.fetchContent();
+                        }
+                    });
                 },
 
                 async fetchContent() {
+                    this.loading = true;
                     const baseUrl = 'https://api.themoviedb.org/3';
                     const language = localStorage.getItem('selectedLanguage') || 'en';
                     const url = `${baseUrl}/${this.contentType}/${this.contentId}?api_key=${this.apiKey}&language=${language}&append_to_response=credits,similar,videos,reviews,release_dates,keywords,images`;
                     
                     try {
                         const response = await fetch(url);
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
                         const data = await response.json();
-                        this.content = data;
                         
-                        const imagesUrl = `${baseUrl}/${this.contentType}/${this.contentId}/images?api_key=${this.apiKey}&language=${language}`;
+                        // Fetch images separately to ensure we get all available logos
+                        const imagesUrl = `${baseUrl}/${this.contentType}/${this.contentId}/images?api_key=${this.apiKey}`;
                         const imagesResponse = await fetch(imagesUrl);
+                        if (!imagesResponse.ok) {
+                            throw new Error(`HTTP error! status: ${imagesResponse.status}`);
+                        }
                         const imagesData = await imagesResponse.json();
-                        this.content.images = imagesData;
                         
-                        const containsKeywords = (text, keywords) => {
-                            if (!text) return false;
-                            const lowercaseText = text.toLowerCase();
-                            return keywords.some(keyword => lowercaseText.includes(keyword));
-                        };
-
-                        const overview = data.overview?.toLowerCase() || '';
-                        const genres = data.genres?.map(g => g.name.toLowerCase()) || [];
-                        const keywords = [...(data.keywords?.keywords || []), ...(data.keywords?.results || [])].map(k => k.name.toLowerCase());
-                        
-                        if (data.release_dates?.results) {
-                            const usRating = data.release_dates.results.find(r => r.iso_3166_1 === 'US');
-                            if (usRating) {
-                                const certification = usRating.release_dates[0]?.certification;
-                                this.content.adult = certification === 'R' || certification === 'NC-17';
+                        // Update the content data
+                        this.$nextTick(() => {
+                            this.content = {
+                                ...data,
+                                images: imagesData
+                            };
+                            
+                            // Process content warnings and other data
+                            this.processContentData();
+                            
+                            // Load additional data for TV shows
+                            if (this.isShow) {
+                                this.seasons = Array.from({length: data.number_of_seasons}, (_, i) => i + 1);
+                                this.updateEpisodes();
                             }
-                        }
-
-                        const violenceKeywords = ['violence', 'violent', 'gore', 'bloody', 'blood', 'murder', 'kill', 'death', 'torture', 'fight', 'combat', 'war', 'brutal', 'massacre', 'slaughter', 'horror'];
-                        this.content.violence = containsKeywords(overview, violenceKeywords) || 
-                                              genres.some(g => ['horror', 'war', 'action'].includes(g)) ||
-                                              keywords.some(k => violenceKeywords.some(vk => k.includes(vk)));
-
-                        const languageKeywords = ['profanity', 'swearing', 'cursing', 'explicit language', 'strong language', 'vulgar'];
-                        this.content.profanity = containsKeywords(overview, languageKeywords) ||
-                                               keywords.some(k => languageKeywords.some(lk => k.includes(lk)));
-
-                        const substanceKeywords = ['drug', 'alcohol', 'substance', 'addiction', 'smoking', 'drunk', 'intoxicated'];
-                        this.content.substances = containsKeywords(overview, substanceKeywords) ||
-                                                keywords.some(k => substanceKeywords.some(sk => k.includes(sk)));
-
-                        const sexualKeywords = ['sexual', 'sex', 'nudity', 'erotic', 'suggestive', 'mature themes'];
-                        this.content.suggestive = containsKeywords(overview, sexualKeywords) ||
-                                                keywords.some(k => sexualKeywords.some(sk => k.includes(sk)));
-
-                        const flashingKeywords = ['strobe', 'flashing', 'epilepsy', 'seizure', 'photosensitive'];
-                        this.content.flashing = containsKeywords(overview, flashingKeywords) ||
-                                              keywords.some(k => flashingKeywords.some(fk => k.includes(fk)));
-
-                        if (!this.content.adult) {
-                            this.content.adult = genres.includes('thriller') && 
-                                               (this.content.violence || this.content.suggestive || this.content.substances);
-                        }
-
-                        if (this.isShow) {
-                            this.seasons = Array.from({length: data.number_of_seasons}, (_, i) => i + 1);
-                            await this.updateEpisodes();
-                        }
-
-                        if (data.videos?.results) {
-                            this.videos = data.videos.results.filter(v => v.site === 'YouTube' && v.type === 'Trailer');
-                        }
-
-                        if (data.reviews?.results) {
-                            this.reviews = data.reviews.results;
-                        }
-
-                        if (data.similar?.results) {
-                            this.similarContent = data.similar.results.slice(0, 6);
-                        }
+                            
+                            // Process videos, reviews, and similar content
+                            if (data.videos?.results) {
+                                this.videos = data.videos.results.filter(v => v.site === 'YouTube' && v.type === 'Trailer');
+                            }
+                            
+                            if (data.reviews?.results) {
+                                this.reviews = data.reviews.results;
+                            }
+                            
+                            if (data.similar?.results) {
+                                this.similarContent = data.similar.results.slice(0, 6);
+                            }
+                            
+                            this.loading = false;
+                        });
                     } catch (error) {
                         console.error('Error fetching content:', error);
+                        this.loading = false;
+                    }
+                },
+
+                processContentData() {
+                    if (!this.content) return;
+                    
+                    const containsKeywords = (text, keywords) => {
+                        if (!text) return false;
+                        const lowercaseText = text.toLowerCase();
+                        return keywords.some(keyword => lowercaseText.includes(keyword));
+                    };
+
+                    const overview = this.content.overview?.toLowerCase() || '';
+                    const genres = this.content.genres?.map(g => g.name.toLowerCase()) || [];
+                    const keywords = [
+                        ...(this.content.keywords?.keywords || []), 
+                        ...(this.content.keywords?.results || [])
+                    ].map(k => k.name.toLowerCase());
+                    
+                    // Process content ratings
+                    if (this.content.release_dates?.results) {
+                        const usRating = this.content.release_dates.results.find(r => r.iso_3166_1 === 'US');
+                        if (usRating) {
+                            const certification = usRating.release_dates[0]?.certification;
+                            this.content.adult = certification === 'R' || certification === 'NC-17';
+                        }
+                    }
+
+                    // Process content warnings
+                    const violenceKeywords = ['violence', 'violent', 'gore', 'bloody', 'blood', 'murder', 'kill', 'death', 'torture', 'fight', 'combat', 'war', 'brutal', 'massacre', 'slaughter', 'horror'];
+                    this.content.violence = containsKeywords(overview, violenceKeywords) || 
+                                          genres.some(g => ['horror', 'war', 'action'].includes(g)) ||
+                                          keywords.some(k => violenceKeywords.some(vk => k.includes(vk)));
+
+                    const languageKeywords = ['profanity', 'swearing', 'cursing', 'explicit language', 'strong language', 'vulgar'];
+                    this.content.profanity = containsKeywords(overview, languageKeywords) ||
+                                           keywords.some(k => languageKeywords.some(lk => k.includes(lk)));
+
+                    const substanceKeywords = ['drug', 'alcohol', 'substance', 'addiction', 'smoking', 'drunk', 'intoxicated'];
+                    this.content.substances = containsKeywords(overview, substanceKeywords) ||
+                                            keywords.some(k => substanceKeywords.some(sk => k.includes(sk)));
+
+                    const sexualKeywords = ['sexual', 'sex', 'nudity', 'erotic', 'suggestive', 'mature themes'];
+                    this.content.suggestive = containsKeywords(overview, sexualKeywords) ||
+                                            keywords.some(k => sexualKeywords.some(sk => k.includes(sk)));
+
+                    const flashingKeywords = ['strobe', 'flashing', 'epilepsy', 'seizure', 'photosensitive'];
+                    this.content.flashing = containsKeywords(overview, flashingKeywords) ||
+                                          keywords.some(k => flashingKeywords.some(fk => k.includes(fk)));
+
+                    if (!this.content.adult) {
+                        this.content.adult = genres.includes('thriller') && 
+                                           (this.content.violence || this.content.suggestive || this.content.substances);
                     }
                 },
 
@@ -1599,17 +1700,6 @@
                 }
             }
         }
-    </script>
-
-    <script>
-        window.addEventListener('appearance-changed', () => {
-            const particlesEl = document.getElementById('particles-js');
-            if (localStorage.getItem('showParticles') === 'false') {
-                particlesEl.style.display = 'none';
-            } else {
-                particlesEl.style.display = 'block';
-            }
-        });
     </script>
 </body>
 </html> 
