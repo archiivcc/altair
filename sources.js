@@ -1,4 +1,14 @@
 const availableSources = [
+
+    {
+        id: 'vidora',
+        name: '[★] Vidora',
+        isFrench: false,
+        urls: {
+            movie: 'https://vidora.su/movie/{id}',
+            tv: 'https://vidora.su/tv/{id}/{season}/{episode}'
+        }
+    },
     {
         id: 'multiembed',
         name: 'MultiEmbed',
@@ -13,8 +23,8 @@ const availableSources = [
         name: 'Frembed',
         isFrench: true,
         urls: {
-            movie: 'https://frembed.xyz/api/film.php?id={id}',
-            tv: 'https://frembed.xyz/api/serie.php?id={id}&sa={season}&epi={episode}'
+            movie: 'https://play.frembed.xyz/api/film.php?id={id}',
+            tv: 'https://play.frembed.xyz/api/serie.php?id={id}&sa={season}&epi={episode}'
         }
     },
     {
@@ -186,16 +196,6 @@ const availableSources = [
         urls: {
             movie: 'https://vidfast.pro/movie/{id}',
             tv: 'https://vidfast.pro/tv/{id}/{season}/{episode}'
-        }
-    },
-    {
-        id: 'cinepulse',
-        name: 'CinePulse (4K)',
-        isFrench: true,
-        isApiResponse: true,
-        urls: {
-            movie: 'https://api.cinepulse.fr/watch/sources?tmdbId={id}&type=movie',
-            tv: 'https://api.cinepulse.fr/watch/sources?tmdbId={id}&type=tv&season={season}&episode={episode}'
         }
     },
     {
