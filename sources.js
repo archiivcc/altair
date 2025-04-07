@@ -2,7 +2,7 @@ const availableSources = [
 
     {
         id: 'vidora',
-        name: '[★] Vidora',
+        name: 'Vidora',
         isFrench: false,
         urls: {
             movie: 'https://vidora.su/movie/{id}',
