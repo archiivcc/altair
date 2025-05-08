@@ -243,6 +243,22 @@
 
     <!-- content -->
     <div class="pt-16">
+
+        <!-- placeholder blocked movies -->
+        <script>
+            const blockedMovieIds = [
+                "0",
+            ];
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const movieId = urlParams.get('id');
+            const contentType = urlParams.get('type');
+
+            if (contentType === 'movie' && blockedMovieIds.includes(movieId)) {
+                window.location.href = '/';
+            }
+        </script>
+
         <!-- backdrop -->
         <div class="relative h-[30vh] sm:h-[40vh] md:h-[60vh]" x-show="content">
             <div class="absolute inset-0 bg-cover bg-center"
