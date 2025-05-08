@@ -1,6 +1,15 @@
 const availableSources = [
 
     {
+        id: 'pstream',
+        name: 'P-Stream',
+        isFrench: false,
+        urls: {
+            movie: 'https://iframe.pstream.org/embed/tmdb-movie-id}',
+            tv: 'https://iframe.pstream.org/embed/tmdb-tv-{id}/{season}/{episode}'
+        }
+    },
+    {
         id: 'vidora',
         name: 'Vidora',
         isFrench: false,
