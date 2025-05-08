@@ -68,6 +68,8 @@ Filtered search for better content discovery
 ## What We Offer That Nova Doesn't
 
 - Favoriting System
+- Non-obtrusive ui
+- No DMCA'd content (yet 🙏)
 
 ## 🤝 Contributing
 
