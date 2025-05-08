@@ -1,5 +1,4 @@
 const availableSources = [
-
     {
         id: 'pstream',
         name: 'P-Stream',

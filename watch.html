@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Watch - Altair</title>
-    <meta name="description" content="Click, watch, enjoy. Altair breaks down the paywall, ensuring that quality content is accessible to everyone.">
-    <meta name="keywords" content="free movies, free streaming, watch movies online, free tv shows, streaming service, watch movies free, online streaming, free movies online, free series online">
+    <meta name="description"
+        content="Click, watch, enjoy. Altair breaks down the paywall, ensuring that quality content is accessible to everyone.">
+    <meta name="keywords"
+        content="free movies, free streaming, watch movies online, free tv shows, streaming service, watch movies free, online streaming, free movies online, free series online">
     <meta name="author" content="archiiv">
-    <meta property="og:type" content="website"/>
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="Altair">
-    <meta property="og:description" content="Click, watch, enjoy. Altair breaks down the paywall, ensuring that quality content is accessible to everyone.">
+    <meta property="og:description"
+        content="Click, watch, enjoy. Altair breaks down the paywall, ensuring that quality content is accessible to everyone.">
     <meta property="og:image" content="https://raw.githubusercontent.com/archiivcc/altair/main/logo.png">
-    <meta property="twitter:card" content="summary_large_image"/>
+    <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="Altair - Watch Movies & TV Shows">
-    <meta property="twitter:description" content="Click, watch, enjoy. Altair breaks down the paywall, ensuring that quality content is accessible to everyone.">
+    <meta property="twitter:description"
+        content="Click, watch, enjoy. Altair breaks down the paywall, ensuring that quality content is accessible to everyone.">
     <meta property="twitter:image" content="https://raw.githubusercontent.com/archiivcc/altair/main/logo.png">
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/archiivcc/altair/main/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.3/cdn.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="sources.js"></script>
@@ -108,19 +114,26 @@
         .card-overlay {
             opacity: 0;
             transition: opacity 0.3s ease;
-            background: linear-gradient(
-                to top,
-                rgba(0, 0, 0, 0.9) 0%,
-                rgba(0, 0, 0, 0.7) 50%,
-                rgba(0, 0, 0, 0.3) 100%
-            );
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.9) 0%,
+                    rgba(0, 0, 0, 0.7) 50%,
+                    rgba(0, 0, 0, 0.3) 100%);
         }
 
         @keyframes textColorAnimation {
-            0% { color: #A855F7; }
-            50% { color: #7C3AED; }
-            100% { color: #A855F7; }
+            0% {
+                color: #A855F7;
+            }
+
+            50% {
+                color: #7C3AED;
+            }
+
+            100% {
+                color: #A855F7;
+            }
         }
+
         .animated-text {
             animation: textColorAnimation 2s ease-in-out infinite;
         }
@@ -135,12 +148,10 @@
         }
 
         .search-container::before {
-            background: radial-gradient(
-                circle at var(--mouse-x, center) var(--mouse-y, center),
-                rgba(168, 85, 247, 0.5) 0%,
-                rgba(168, 85, 247, 0.2) 25%,
-                transparent 70%
-            );
+            background: radial-gradient(circle at var(--mouse-x, center) var(--mouse-y, center),
+                    rgba(168, 85, 247, 0.5) 0%,
+                    rgba(168, 85, 247, 0.2) 25%,
+                    transparent 70%);
         }
 
         .search-input:focus {
@@ -153,6 +164,7 @@
             from {
                 transform: rotate(0deg);
             }
+
             to {
                 transform: rotate(180deg);
             }
@@ -167,8 +179,10 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-900 text-white min-h-screen" x-data="app()">
-    <div x-show="localStorage.getItem('showParticles') !== 'false'" id="particles-js" class="fixed inset-0 pointer-events-none z-0"></div>
+    <div x-show="localStorage.getItem('showParticles') !== 'false'" id="particles-js"
+        class="fixed inset-0 pointer-events-none z-0"></div>
 
     <!-- navigation -->
     <nav class="fixed w-full z-50 glass-effect">
@@ -177,53 +191,51 @@
                 <div class="flex items-center space-x-8">
                     <a href="/" class="flex items-center space-x-3">
                         <img src="logo.png" alt="Altair Logo" class="h-8 w-8 md:h-10 md:w-10">
-                        <span class="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-800">Altair</span>
-                </a>
+                        <span
+                            class="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-800">Altair</span>
+                    </a>
                     <div class="hidden md:flex space-x-6">
                         <a href="index.html" class="nav-link">Home</a>
-                        <a href="https://github.com/archiivcc/altair" target="_blank" class="nav-link">GitHub</a>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="settings.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300" title="Settings">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 settings-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                </a>
+                    <a href="settings.html" class="text-gray-400 hover:text-purple-400 transition-colors duration-300"
+                        title="Settings">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 settings-icon" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </a>
                     <!-- mobile menu button -->
                     <button @click="mobileMenu = !mobileMenu" class="md:hidden text-gray-300 hover:text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
                     </button>
                 </div>
             </div>
-            
+
             <!-- mobile menu -->
-            <div x-show="mobileMenu" 
-                x-transition:enter="transition ease-out duration-200"
+            <div x-show="mobileMenu" x-transition:enter="transition ease-out duration-200"
                 x-transition:enter-start="opacity-0 transform -translate-y-2"
                 x-transition:enter-end="opacity-100 transform translate-y-0"
                 x-transition:leave="transition ease-in duration-150"
                 x-transition:leave-start="opacity-100 transform translate-y-0"
-                x-transition:leave-end="opacity-0 transform -translate-y-2"
-                class="md:hidden mt-4 pb-4">
+                x-transition:leave-end="opacity-0 transform -translate-y-2" class="md:hidden mt-4 pb-4">
                 <div class="flex flex-col space-y-4">
                     <a href="/" class="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">Browse</a>
-                    <button @click="showWatchLater = true; mobileMenu = false" 
-                            class="flex items-center justify-between px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">
+                    <button @click="showWatchLater = true; mobileMenu = false"
+                        class="flex items-center justify-between px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">
                         <span>Watch Later</span>
-                        <span x-show="watchLaterCount > 0" 
-                              class="bg-purple-600 text-white text-xs flex items-center justify-center rounded-full w-6 h-6" 
-                              x-text="watchLaterCount"></span>
+                        <span x-show="watchLaterCount > 0"
+                            class="bg-purple-600 text-white text-xs flex items-center justify-center rounded-full w-6 h-6"
+                            x-text="watchLaterCount"></span>
                     </button>
-                    <a href="https://github.com/archiivcc/altair" target="_blank" 
-                       class="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">GitHub</a>
-                    <a href="https://ko-fi.com/archiiv" target="_blank" 
-                       class="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">Ko-Fi</a>
-                    <a href="https://discord.gg/s9kUZw7CqP" target="_blank" 
-                       class="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">Discord</a>
                 </div>
             </div>
         </div>
@@ -233,7 +245,9 @@
     <div class="pt-16">
         <!-- backdrop -->
         <div class="relative h-[30vh] sm:h-[40vh] md:h-[60vh]" x-show="content">
-            <div class="absolute inset-0 bg-cover bg-center" :style="'background-image: url(https://image.tmdb.org/t/p/original' + content?.backdrop_path + ')'"></div>
+            <div class="absolute inset-0 bg-cover bg-center"
+                :style="'background-image: url(https://image.tmdb.org/t/p/original' + content?.backdrop_path + ')'">
+            </div>
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent"></div>
             <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6 lg:p-12">
                 <!-- title logo -->
@@ -242,16 +256,15 @@
                             logo.iso_639_1 === content.original_language || 
                             (!logo.iso_639_1 && content.original_language === 'en') || 
                             logo.iso_639_1 === 'en'
-                        )?.file_path || content.images.logos[0].file_path)" 
-                         class="max-h-24 md:max-h-32 w-auto" 
-                         :alt="content?.title || content?.name + ' logo'">
+                        )?.file_path || content.images.logos[0].file_path)" class="max-h-24 md:max-h-32 w-auto"
+                        :alt="content?.title || content?.name + ' logo'">
                 </div>
                 <!-- fallback title text -->
-                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold tracking-wide" 
-                    x-show="!content?.images?.logos?.length"
-                    x-text="content?.title || content?.name"></h1>
-                
-                <div class="mt-3 md:mt-4 flex items-center flex-wrap gap-2 md:gap-4 text-xs md:text-sm lg:text-base text-gray-300">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold tracking-wide"
+                    x-show="!content?.images?.logos?.length" x-text="content?.title || content?.name"></h1>
+
+                <div
+                    class="mt-3 md:mt-4 flex items-center flex-wrap gap-2 md:gap-4 text-xs md:text-sm lg:text-base text-gray-300">
                     <template x-if="content?.release_date">
                         <span x-text="new Date(content.release_date).getFullYear()"></span>
                     </template>
@@ -263,8 +276,10 @@
                     </template>
                     <template x-if="content?.vote_average">
                         <div class="flex items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-yellow-400" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                             <span x-text="content.vote_average.toFixed(1)"></span>
                         </div>
@@ -273,7 +288,9 @@
 
                 <div class="flex flex-wrap gap-2 mt-3 md:mt-4">
                     <template x-for="genre in content?.genres" :key="genre.id">
-                        <span class="px-2 md:px-3 py-1 text-xs md:text-sm bg-black/30 backdrop-blur-sm rounded-full text-gray-300" x-text="genre.name"></span>
+                        <span
+                            class="px-2 md:px-3 py-1 text-xs md:text-sm bg-black/30 backdrop-blur-sm rounded-full text-gray-300"
+                            x-text="genre.name"></span>
                     </template>
                 </div>
             </div>
@@ -287,45 +304,51 @@
                     <!-- video player -->
                     <div class="bg-gray-800 rounded-lg overflow-hidden">
                         <div class="relative pt-[56.25%]" id="player-container">
-                            <iframe x-bind:src="currentVideoUrl" 
-                                    class="absolute top-0 left-0 w-full h-full" 
-                                    frameborder="0" 
-                                    scrolling="no" 
-                                    @error="checkProviderStatus()"
-                                    @load="handleProviderLoad()"
-                                    allowfullscreen>
+                            <iframe x-bind:src="currentVideoUrl" class="absolute top-0 left-0 w-full h-full"
+                                frameborder="0" scrolling="no" @error="checkProviderStatus()"
+                                @load="handleProviderLoad()" allowfullscreen>
                             </iframe>
                             <div class="absolute top-2 right-2 flex space-x-2">
-                                <button @click="toggleFavorite(content)" 
-                                        class="p-1.5 md:p-2 bg-gray-900 bg-opacity-75 rounded-full hover:bg-amber-600 transition-colors duration-300"
-                                        :class="isInFavorites(content) ? 'text-amber-400' : 'text-white'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" :fill="isInFavorites(content) ? 'currentColor' : 'none'" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                <button @click="toggleFavorite(content)"
+                                    class="p-1.5 md:p-2 bg-gray-900 bg-opacity-75 rounded-full hover:bg-amber-600 transition-colors duration-300"
+                                    :class="isInFavorites(content) ? 'text-amber-400' : 'text-white'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6"
+                                        :fill="isInFavorites(content) ? 'currentColor' : 'none'" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                                     </svg>
                                 </button>
-                                <button @click="toggleWatchLater(content)" 
-                                        class="p-1.5 md:p-2 bg-gray-900 bg-opacity-75 rounded-full hover:bg-purple-600 transition-colors duration-300"
-                                        :class="isInWatchLater(content) ? 'text-purple-400' : 'text-white'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+                                <button @click="toggleWatchLater(content)"
+                                    class="p-1.5 md:p-2 bg-gray-900 bg-opacity-75 rounded-full hover:bg-purple-600 transition-colors duration-300"
+                                    :class="isInWatchLater(content) ? 'text-purple-400' : 'text-white'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z" />
                                     </svg>
                                 </button>
                             </div>
                             <!-- provider down message -->
-                            <div x-show="showDownMessage" 
-                                 class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-90">
+                            <div x-show="showDownMessage"
+                                class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-90">
                                 <div class="text-center px-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 md:h-12 md:w-12 mx-auto text-red-500 mb-3 md:mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-8 w-8 md:h-12 md:w-12 mx-auto text-red-500 mb-3 md:mb-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                     </svg>
-                                    <p class="text-lg md:text-xl font-semibold text-white mb-2">Source unavailable, trying alternatives... 🔄</p>
-                                    <p class="text-sm md:text-base text-gray-400">If this persists, you can manually select another source below!</p>
+                                    <p class="text-lg md:text-xl font-semibold text-white mb-2">Source unavailable,
+                                        trying alternatives... 🔄</p>
+                                    <p class="text-sm md:text-base text-gray-400">If this persists, you can manually
+                                        select another source below!</p>
                                 </div>
                             </div>
                         </div>
                         <div class="p-3 md:p-4">
                             <div class="flex items-center justify-between text-xs md:text-sm text-gray-400">
-                                <div class="text-center mx-auto animated-text" x-show="content?.runtime || content?.episode_run_time">
+                                <div class="text-center mx-auto animated-text"
+                                    x-show="content?.runtime || content?.episode_run_time">
                                     <span>If you start now, it'll end at </span>
                                     <span x-text="(() => {
                                         const runtime = content?.runtime || content?.episode_run_time?.[0] || 0;
@@ -334,11 +357,14 @@
                                         return endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                                     })()"></span>
                                 </div>
-                                <button @click="toggleFavorite(content)" 
-                                        class="p-1.5 md:p-2 bg-gray-700 rounded-full hover:bg-purple-600 transition-colors duration-300"
-                                        :class="isInFavorites(content) ? 'text-purple-400' : 'text-white'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5" :fill="isInFavorites(content) ? 'currentColor' : 'none'" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                <button @click="toggleFavorite(content)"
+                                    class="p-1.5 md:p-2 bg-gray-700 rounded-full hover:bg-purple-600 transition-colors duration-300"
+                                    :class="isInFavorites(content) ? 'text-purple-400' : 'text-white'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5"
+                                        :fill="isInFavorites(content) ? 'currentColor' : 'none'" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                                     </svg>
                                 </button>
                             </div>
@@ -350,22 +376,31 @@
                         <div class="bg-gray-800 rounded-lg p-4 md:p-6 space-y-4">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center space-x-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-5 w-5 md:h-6 md:w-6 text-purple-400" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
                                     </svg>
                                     <h3 class="text-lg md:text-xl font-semibold">Episodes</h3>
                                 </div>
                                 <div class="flex items-center space-x-2">
-                                    <button @click="viewMode = viewMode === 'grid' ? 'list' : 'grid'" 
-                                            class="p-2 hover:bg-gray-700 rounded-lg transition-colors">
+                                    <button @click="viewMode = viewMode === 'grid' ? 'list' : 'grid'"
+                                        class="p-2 hover:bg-gray-700 rounded-lg transition-colors">
                                         <template x-if="viewMode === 'grid'">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-5 w-5 text-gray-400 hover:text-white" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                                             </svg>
                                         </template>
                                         <template x-if="viewMode === 'list'">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-5 w-5 text-gray-400 hover:text-white" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                                             </svg>
                                         </template>
                                     </button>
@@ -374,11 +409,12 @@
 
                             <!-- season selector -->
                             <div class="relative">
-                                <div class="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
+                                <div
+                                    class="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
                                     <template x-for="season in seasons" :key="season">
                                         <button @click="selectedSeason = season; updateEpisodes()"
-                                                class="px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap"
-                                                :class="selectedSeason === season ? 'bg-purple-600 text-white' : 'bg-gray-700 hover:bg-gray-600 text-gray-300'">
+                                            class="px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap"
+                                            :class="selectedSeason === season ? 'bg-purple-600 text-white' : 'bg-gray-700 hover:bg-gray-600 text-gray-300'">
                                             <span x-text="'Season ' + season"></span>
                                         </button>
                                     </template>
@@ -386,10 +422,10 @@
                             </div>
 
                             <!-- episodes grid/list view -->
-                            <div :class="viewMode === 'grid' ? 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4' : 'space-y-4'">
+                            <div
+                                :class="viewMode === 'grid' ? 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4' : 'space-y-4'">
                                 <template x-for="episode in seasonData?.episodes" :key="episode.episode_number">
-                                    <div @click="selectedEpisode = episode.episode_number; loadEpisode()"
-                                         :class="[
+                                    <div @click="selectedEpisode = episode.episode_number; loadEpisode()" :class="[
                                              viewMode === 'grid' 
                                                 ? 'bg-gray-700 rounded-lg overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-lg'
                                                 : 'bg-gray-700 rounded-lg overflow-hidden cursor-pointer hover:bg-gray-600 transition-colors',
@@ -403,15 +439,18 @@
                                                     <img :src="episode.still_path 
                                                               ? 'https://image.tmdb.org/t/p/w300' + episode.still_path
                                                               : 'https://via.placeholder.com/300x169'"
-                                                         :alt="episode.name"
-                                                         class="w-full h-full object-cover">
-                                                    <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
-                                                        <span class="text-sm font-medium" x-text="'Episode ' + episode.episode_number"></span>
+                                                        :alt="episode.name" class="w-full h-full object-cover">
+                                                    <div
+                                                        class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
+                                                        <span class="text-sm font-medium"
+                                                            x-text="'Episode ' + episode.episode_number"></span>
                                                     </div>
                                                 </div>
                                                 <div class="p-3">
-                                                    <h4 class="font-medium text-sm line-clamp-1" x-text="episode.name"></h4>
-                                                    <p class="text-xs text-gray-400 mt-1 line-clamp-2" x-text="episode.overview || 'No description available.'"></p>
+                                                    <h4 class="font-medium text-sm line-clamp-1" x-text="episode.name">
+                                                    </h4>
+                                                    <p class="text-xs text-gray-400 mt-1 line-clamp-2"
+                                                        x-text="episode.overview || 'No description available.'"></p>
                                                 </div>
                                             </div>
                                         </template>
@@ -421,16 +460,19 @@
                                                     <img :src="episode.still_path 
                                                               ? 'https://image.tmdb.org/t/p/w300' + episode.still_path
                                                               : 'https://via.placeholder.com/300x169'"
-                                                         :alt="episode.name"
-                                                         class="w-full aspect-video object-cover rounded">
+                                                        :alt="episode.name"
+                                                        class="w-full aspect-video object-cover rounded">
                                                 </div>
                                                 <div class="flex-1 min-w-0">
                                                     <div class="flex items-center justify-between">
-                                                        <span class="text-sm font-medium text-gray-400" x-text="'Episode ' + episode.episode_number"></span>
-                                                        <span class="text-xs text-gray-500" x-text="episode.air_date"></span>
+                                                        <span class="text-sm font-medium text-gray-400"
+                                                            x-text="'Episode ' + episode.episode_number"></span>
+                                                        <span class="text-xs text-gray-500"
+                                                            x-text="episode.air_date"></span>
                                                     </div>
                                                     <h4 class="font-medium mt-1" x-text="episode.name"></h4>
-                                                    <p class="text-sm text-gray-400 mt-1 line-clamp-2" x-text="episode.overview || 'No description available.'"></p>
+                                                    <p class="text-sm text-gray-400 mt-1 line-clamp-2"
+                                                        x-text="episode.overview || 'No description available.'"></p>
                                                 </div>
                                             </div>
                                         </template>
@@ -443,9 +485,12 @@
                     <!-- source selector -->
                     <div class="bg-gray-800 rounded-lg p-4 md:p-6">
                         <div class="flex items-center space-x-3 mb-3 md:mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6 text-purple-400"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <h3 class="text-lg md:text-xl font-semibold">Stream</h3>
                         </div>
@@ -455,8 +500,7 @@
                                 <div class="flex flex-wrap gap-2">
                                     <template x-for="source in availableSources" :key="source.id">
                                         <template x-if="!source.isFrench">
-                                            <button 
-                                                @click="selectedSource = source.id; updateVideoUrl()"
+                                            <button @click="selectedSource = source.id; updateVideoUrl()"
                                                 class="px-3 md:px-4 py-1.5 md:py-2 rounded-lg transition-all duration-300 text-sm md:text-base"
                                                 :class="selectedSource === source.id ? 'bg-purple-600 text-white' : 'bg-gray-700 hover:bg-gray-600 text-gray-200'"
                                                 x-text="source.name">
@@ -470,8 +514,7 @@
                                 <div class="flex flex-wrap gap-2">
                                     <template x-for="source in availableSources" :key="source.id">
                                         <template x-if="source.isFrench">
-                                            <button 
-                                                @click="selectedSource = source.id; updateVideoUrl()"
+                                            <button @click="selectedSource = source.id; updateVideoUrl()"
                                                 class="px-3 md:px-4 py-1.5 md:py-2 rounded-lg transition-all duration-300 text-sm md:text-base"
                                                 :class="selectedSource === source.id ? 'bg-purple-600 text-white' : 'bg-gray-700 hover:bg-gray-600 text-gray-200'"
                                                 x-text="source.name">
@@ -487,15 +530,18 @@
                     <div class="mt-8 bg-gray-800 rounded-lg p-6">
                         <div class="flex items-center justify-between mb-4">
                             <div class="flex items-center space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                 </svg>
                                 <h3 class="text-xl font-semibold text-gray-200">Download</h3>
                             </div>
                             <template x-if="isShow">
                                 <div class="flex items-center space-x-2">
                                     <label class="text-gray-400">Season:</label>
-                                    <select x-model="selectedTorrentSeason" @change="fetchTorrentInfo()" class="bg-gray-700 text-gray-200 rounded px-2 py-1">
+                                    <select x-model="selectedTorrentSeason" @change="fetchTorrentInfo()"
+                                        class="bg-gray-700 text-gray-200 rounded px-2 py-1">
                                         <template x-for="season in seasons" :key="season">
                                             <option :value="season" x-text="season"></option>
                                         </template>
@@ -512,23 +558,29 @@
                             No torrents found
                         </div>
 
-                        <div x-show="torrentInfo && torrentInfo.length > 0" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div x-show="torrentInfo && torrentInfo.length > 0"
+                            class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <template x-for="torrent in torrentInfo" :key="torrent.magnet">
-                                <div class="bg-gray-700 rounded-lg p-4 hover:bg-gray-600 transition-colors duration-300">
+                                <div
+                                    class="bg-gray-700 rounded-lg p-4 hover:bg-gray-600 transition-colors duration-300">
                                     <div class="flex items-center justify-between mb-3">
                                         <div class="flex items-center space-x-2">
-                                            <span class="text-purple-400 font-semibold" x-text="torrent.quality || 'N/A'"></span>
+                                            <span class="text-purple-400 font-semibold"
+                                                x-text="torrent.quality || 'N/A'"></span>
                                             <span class="text-gray-400">•</span>
                                             <span class="text-gray-300" x-text="torrent.type || 'N/A'"></span>
                                         </div>
                                         <div class="flex items-center space-x-1 text-green-400">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M5 10l7-7m0 0l7 7m-7-7v18" />
                                             </svg>
                                             <span x-text="torrent.seeders || '0'"></span>
                                         </div>
                                     </div>
-                                    <a :href="torrent.magnet" class="block w-full text-center bg-purple-600 text-white text-sm font-medium rounded-md py-2 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors">
+                                    <a :href="torrent.magnet"
+                                        class="block w-full text-center bg-purple-600 text-white text-sm font-medium rounded-md py-2 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors">
                                         Download Torrent
                                     </a>
                                 </div>
@@ -541,15 +593,22 @@
                 <div class="space-y-6">
                     <!-- overview -->
                     <div class="bg-gray-800 rounded-lg p-6">
-                        <div class="flex items-center justify-between section-header" @click="toggleSection('overview')">
+                        <div class="flex items-center justify-between section-header"
+                            @click="toggleSection('overview')">
                             <div class="flex items-center space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 <h3 class="text-xl font-semibold">Overview</h3>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform duration-300" :class="sections.overview ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 transform transition-transform duration-300"
+                                :class="sections.overview ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
                         <div class="section-content mt-4" :class="sections.overview ? 'expanded' : 'collapsed'">
@@ -561,66 +620,91 @@
                     <div class="bg-gray-800 rounded-lg p-6">
                         <div class="flex items-center justify-between section-header" @click="toggleSection('details')">
                             <div class="flex items-center space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 <h3 class="text-xl font-semibold">Details</h3>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform duration-300" :class="sections.details ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 transform transition-transform duration-300"
+                                :class="sections.details ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
                         <div class="section-content mt-4" :class="sections.details ? 'expanded' : 'collapsed'">
                             <div>
                                 <!-- content warnings -->
-                                <template x-if="content?.adult || content?.violence || content?.profanity || content?.substances || content?.suggestive || content?.flashing">
+                                <template
+                                    x-if="content?.adult || content?.violence || content?.profanity || content?.substances || content?.suggestive || content?.flashing">
                                     <div class="mb-4">
                                         <h4 class="text-lg font-semibold text-purple-400 mb-3">Content Warnings</h4>
                                         <div class="space-y-2">
                                             <template x-if="content?.adult">
                                                 <div class="flex items-center space-x-2 text-red-400">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                                     </svg>
                                                     <span>Adult Content (R/NC-17)</span>
                                                 </div>
                                             </template>
                                             <template x-if="content?.violence">
                                                 <div class="flex items-center space-x-2 text-orange-400">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                                     </svg>
                                                     <span>Violence/Gore</span>
                                                 </div>
                                             </template>
                                             <template x-if="content?.profanity">
                                                 <div class="flex items-center space-x-2 text-yellow-400">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                                     </svg>
                                                     <span>Strong Language</span>
                                                 </div>
                                             </template>
                                             <template x-if="content?.substances">
                                                 <div class="flex items-center space-x-2 text-blue-400">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                                     </svg>
                                                     <span>Drug/Alcohol Use</span>
                                                 </div>
                                             </template>
                                             <template x-if="content?.suggestive">
                                                 <div class="flex items-center space-x-2 text-pink-400">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                                     </svg>
                                                     <span>Sexual Content</span>
                                                 </div>
                                             </template>
                                             <template x-if="content?.flashing">
                                                 <div class="flex items-center space-x-2 text-purple-400">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                                     </svg>
                                                     <span>Flashing Lights/Photosensitivity</span>
                                                 </div>
@@ -646,7 +730,8 @@
                                         </p>
                                     </template>
                                     <p class="text-gray-300">
-                                        <span class="font-medium">Rating: ⭐<span x-text="content?.vote_average?.toFixed(1) + '/10 (' + content?.vote_count + ' votes)'"></span></span>
+                                        <span class="font-medium">Rating: ⭐<span
+                                                x-text="content?.vote_average?.toFixed(1) + '/10 (' + content?.vote_count + ' votes)'"></span></span>
                                     </p>
                                     <p class="text-gray-300">
                                         <span class="font-medium">Genres:</span>
@@ -661,22 +746,30 @@
                     <div class="bg-gray-800 rounded-lg p-6">
                         <div class="flex items-center justify-between section-header" @click="toggleSection('cast')">
                             <div class="flex items-center space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
                                 <h3 class="text-xl font-semibold">Cast</h3>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform duration-300" :class="sections.cast ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 transform transition-transform duration-300"
+                                :class="sections.cast ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
                         <div class="section-content mt-4" :class="sections.cast ? 'expanded' : 'collapsed'">
                             <div class="relative overflow-visible px-6">
-                                <button @click="castPage > 0 && castPage--" 
-                                        class="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-900 p-2 rounded-full hover:bg-gray-700 transition-all duration-300 z-20"
-                                        :class="castPage === 0 ? 'opacity-50 cursor-not-allowed' : 'opacity-100'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                                <button @click="castPage > 0 && castPage--"
+                                    class="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-900 p-2 rounded-full hover:bg-gray-700 transition-all duration-300 z-20"
+                                    :class="castPage === 0 ? 'opacity-50 cursor-not-allowed' : 'opacity-100'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 19l-7-7 7-7" />
                                     </svg>
                                 </button>
                                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 relative overflow-hidden">
@@ -685,11 +778,12 @@
                                             <div class="w-12 h-12 flex-shrink-0">
                                                 <template x-if="actor.profile_path">
                                                     <img :src="'https://image.tmdb.org/t/p/w200' + actor.profile_path"
-                                                         :alt="actor.name"
-                                                         class="w-full h-full rounded-full object-cover">
+                                                        :alt="actor.name"
+                                                        class="w-full h-full rounded-full object-cover">
                                                 </template>
                                                 <template x-if="!actor.profile_path">
-                                                    <div class="w-full h-full rounded-full bg-gray-700 flex items-center justify-center text-xs text-gray-400">
+                                                    <div
+                                                        class="w-full h-full rounded-full bg-gray-700 flex items-center justify-center text-xs text-gray-400">
                                                         X
                                                     </div>
                                                 </template>
@@ -701,19 +795,21 @@
                                         </div>
                                     </template>
                                 </div>
-                                <button @click="castPage < maxCastPage && castPage++" 
-                                        class="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-900 p-2 rounded-full hover:bg-gray-700 transition-all duration-300 z-20"
-                                        :class="castPage >= maxCastPage ? 'opacity-50 cursor-not-allowed' : 'opacity-100'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                <button @click="castPage < maxCastPage && castPage++"
+                                    class="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-900 p-2 rounded-full hover:bg-gray-700 transition-all duration-300 z-20"
+                                    :class="castPage >= maxCastPage ? 'opacity-50 cursor-not-allowed' : 'opacity-100'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5l7 7-7 7" />
                                     </svg>
                                 </button>
                             </div>
                             <div class="flex justify-center mt-4 space-x-1">
                                 <template x-for="page in maxCastPage + 1" :key="page">
                                     <button @click="castPage = page - 1"
-                                            class="w-2 h-2 rounded-full transition-all duration-300"
-                                            :class="castPage === page - 1 ? 'bg-purple-500' : 'bg-gray-600 hover:bg-gray-500'">
+                                        class="w-2 h-2 rounded-full transition-all duration-300"
+                                        :class="castPage === page - 1 ? 'bg-purple-500' : 'bg-gray-600 hover:bg-gray-500'">
                                     </button>
                                 </template>
                             </div>
@@ -722,15 +818,22 @@
 
                     <!-- production info -->
                     <div class="bg-gray-800 rounded-lg p-6">
-                        <div class="flex items-center justify-between section-header" @click="toggleSection('production')">
+                        <div class="flex items-center justify-between section-header"
+                            @click="toggleSection('production')">
                             <div class="flex items-center space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                                 </svg>
                                 <h3 class="text-xl font-semibold">Production Info</h3>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform duration-300" :class="sections.production ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 transform transition-transform duration-300"
+                                :class="sections.production ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
                         <div class="section-content mt-4" :class="sections.production ? 'expanded' : 'collapsed'">
@@ -750,13 +853,15 @@
                                 <template x-if="content?.spoken_languages?.length > 0">
                                     <p class="text-gray-300">
                                         <span class="font-medium">Languages:</span>
-                                        <span x-text="content.spoken_languages.map(l => l.english_name).join(', ')"></span>
+                                        <span
+                                            x-text="content.spoken_languages.map(l => l.english_name).join(', ')"></span>
                                     </p>
                                 </template>
                                 <template x-if="!isShow && content?.runtime">
                                     <p class="text-gray-300">
                                         <span class="font-medium">Runtime:</span>
-                                        <span x-text="Math.floor(content.runtime / 60) + 'h ' + (content.runtime % 60) + 'm'"></span>
+                                        <span
+                                            x-text="Math.floor(content.runtime / 60) + 'h ' + (content.runtime % 60) + 'm'"></span>
                                     </p>
                                 </template>
                                 <template x-if="content?.budget">
@@ -777,25 +882,30 @@
 
                     <!-- trailers -->
                     <div class="bg-gray-800 rounded-lg p-6">
-                        <div class="flex items-center justify-between section-header" @click="toggleSection('trailers')">
+                        <div class="flex items-center justify-between section-header"
+                            @click="toggleSection('trailers')">
                             <div class="flex items-center space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                 </svg>
                                 <h3 class="text-xl font-semibold">Trailers & Videos</h3>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform duration-300" :class="sections.trailers ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 transform transition-transform duration-300"
+                                :class="sections.trailers ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
                         <div class="section-content mt-4" :class="sections.trailers ? 'expanded' : 'collapsed'">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <template x-for="video in videos" :key="video.key">
                                     <div class="relative pb-[56.25%] bg-gray-700 rounded-lg overflow-hidden">
-                                        <iframe 
-                                            :src="'https://www.youtube.com/embed/' + video.key"
-                                            class="absolute inset-0 w-full h-full"
-                                            frameborder="0"
+                                        <iframe :src="'https://www.youtube.com/embed/' + video.key"
+                                            class="absolute inset-0 w-full h-full" frameborder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowfullscreen>
                                         </iframe>
@@ -810,14 +920,14 @@
             <!-- similar content -->
             <div class="mt-8 md:mt-12">
                 <h2 class="text-xl md:text-2xl font-bold mb-4 md:mb-6">Similar Content</h2>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" x-show="similarContent.length > 0">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
+                    x-show="similarContent.length > 0">
                     <template x-for="item in similarContent" :key="item.id">
                         <div class="relative card-hover">
                             <a :href="'watch.html?id=' + item.id + '&type=' + contentType"
-                               class="block rounded-lg overflow-hidden bg-gray-800 aspect-[2/3]">
+                                class="block rounded-lg overflow-hidden bg-gray-800 aspect-[2/3]">
                                 <div class="relative h-full">
-                                    <img
-                                        :src="'https://image.tmdb.org/t/p/w500' + item.poster_path"
+                                    <img :src="'https://image.tmdb.org/t/p/w500' + item.poster_path"
                                         :alt="item.title || item.name"
                                         class="w-full h-full object-cover transition-all flex items-center justify-center"
                                         @error="event => {
@@ -825,21 +935,25 @@
                                             event.target.classList.remove('object-cover');
                                             event.target.classList.add('object-contain');
                                         }" />
-                                    <div class="card-overlay absolute inset-0 flex flex-col justify-end p-2 sm:p-3 md:p-4">
-                                        <h3 class="text-sm md:text-base font-semibold" x-text="item.title || item.name"></h3>
+                                    <div
+                                        class="card-overlay absolute inset-0 flex flex-col justify-end p-2 sm:p-3 md:p-4">
+                                        <h3 class="text-sm md:text-base font-semibold" x-text="item.title || item.name">
+                                        </h3>
                                         <p class="text-gray-400 text-xs md:text-sm flex items-center mt-1">
                                             <span class="text-yellow-400 mr-1">⭐</span>
                                             <span x-text="(item.vote_average || 'N/A') + '/10'"></span>
                                         </p>
-                                        <p class="text-gray-300 text-xs mt-2 hidden sm:block" x-text="item.overview.substring(0, 100) + '...'"></p>
+                                        <p class="text-gray-300 text-xs mt-2 hidden sm:block"
+                                            x-text="item.overview.substring(0, 100) + '...'"></p>
                                     </div>
                                 </div>
                             </a>
                             <button @click.stop="toggleWatchLater(item)"
-                                    class="absolute top-2 right-2 p-1.5 md:p-2 bg-gray-900 bg-opacity-75 rounded-full hover:bg-purple-600 transition-all duration-300"
-                                    :class="isInWatchLater(item) ? 'text-purple-400' : 'text-white'">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+                                class="absolute top-2 right-2 p-1.5 md:p-2 bg-gray-900 bg-opacity-75 rounded-full hover:bg-purple-600 transition-all duration-300"
+                                :class="isInWatchLater(item) ? 'text-purple-400' : 'text-white'">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z" />
                                 </svg>
                             </button>
                         </div>
@@ -853,41 +967,36 @@
     <div class="container mx-auto px-4 md:px-6 py-8 md:py-12">
         <div class="text-center mb-6 md:mb-8">
             <h2 class="text-xl md:text-2xl font-bold text-gray-300">Content Available From</h2>
-            <p class="text-sm md:text-base text-gray-400 mt-2">Altair aggregates content from various premium streaming platforms</p>
+            <p class="text-sm md:text-base text-gray-400 mt-2">Altair aggregates content from various premium streaming
+                platforms</p>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <a href="https://www.netflix.com" target="_blank" 
-               class="bg-purple-600/10 hover:bg-purple-600/20 text-white px-4 py-3 rounded-lg transition-all duration-300 
+            <a href="https://www.netflix.com" target="_blank" class="bg-purple-600/10 hover:bg-purple-600/20 text-white px-4 py-3 rounded-lg transition-all duration-300 
                       border border-purple-500/20 hover:border-purple-500/40 transform hover:-translate-y-1 hover:shadow-lg 
                       hover:shadow-purple-500/20 text-center font-medium">
                 Netflix
             </a>
-            <a href="https://www.disneyplus.com" target="_blank" 
-               class="bg-purple-600/10 hover:bg-purple-600/20 text-white px-4 py-3 rounded-lg transition-all duration-300 
+            <a href="https://www.disneyplus.com" target="_blank" class="bg-purple-600/10 hover:bg-purple-600/20 text-white px-4 py-3 rounded-lg transition-all duration-300 
                       border border-purple-500/20 hover:border-purple-500/40 transform hover:-translate-y-1 hover:shadow-lg 
                       hover:shadow-purple-500/20 text-center font-medium">
                 Disney+
             </a>
-            <a href="https://www.hulu.com" target="_blank" 
-               class="bg-purple-600/10 hover:bg-purple-600/20 text-white px-4 py-3 rounded-lg transition-all duration-300 
+            <a href="https://www.hulu.com" target="_blank" class="bg-purple-600/10 hover:bg-purple-600/20 text-white px-4 py-3 rounded-lg transition-all duration-300 
                       border border-purple-500/20 hover:border-purple-500/40 transform hover:-translate-y-1 hover:shadow-lg 
                       hover:shadow-purple-500/20 text-center font-medium">
                 Hulu
             </a>
-            <a href="https://www.max.com" target="_blank" 
-               class="bg-purple-600/10 hover:bg-purple-600/20 text-white px-4 py-3 rounded-lg transition-all duration-300 
+            <a href="https://www.max.com" target="_blank" class="bg-purple-600/10 hover:bg-purple-600/20 text-white px-4 py-3 rounded-lg transition-all duration-300 
                       border border-purple-500/20 hover:border-purple-500/40 transform hover:-translate-y-1 hover:shadow-lg 
                       hover:shadow-purple-500/20 text-center font-medium">
                 Max
             </a>
-            <a href="https://tv.apple.com" target="_blank" 
-               class="bg-purple-600/10 hover:bg-purple-600/20 text-white px-4 py-3 rounded-lg transition-all duration-300 
+            <a href="https://tv.apple.com" target="_blank" class="bg-purple-600/10 hover:bg-purple-600/20 text-white px-4 py-3 rounded-lg transition-all duration-300 
                       border border-purple-500/20 hover:border-purple-500/40 transform hover:-translate-y-1 hover:shadow-lg 
                       hover:shadow-purple-500/20 text-center font-medium">
                 Apple TV+
             </a>
-            <a href="https://www.amazon.com/Prime-Video" target="_blank" 
-               class="bg-purple-600/10 hover:bg-purple-600/20 text-white px-4 py-3 rounded-lg transition-all duration-300 
+            <a href="https://www.amazon.com/Prime-Video" target="_blank" class="bg-purple-600/10 hover:bg-purple-600/20 text-white px-4 py-3 rounded-lg transition-all duration-300 
                       border border-purple-500/20 hover:border-purple-500/40 transform hover:-translate-y-1 hover:shadow-lg 
                       hover:shadow-purple-500/20 text-center font-medium">
                 Prime Video
@@ -898,43 +1007,45 @@
     <footer class="text-gray-400 py-6 mt-12">
         <div class="container mx-auto text-center">
             <p class="text-sm">
-                Altair doesn't store files, but provides links to external services. Legal issues should be discussed with file providers and hosts. The files provided by video providers are not covered by Altair.
+                Altair doesn't store files, but provides links to external services. Legal issues should be discussed
+                with file providers and hosts. The files provided by video providers are not covered by Altair.
             </p>
             <p class="mt-2 text-xs">
                 Made with ❤ by archiiv. 05/03/25
             </p>
             <p class="mt-2 text-xs">
-                <a href="mailto:chase@archiiv.org" class="text-purple-400 hover:text-purple-300 transition-colors">chase@archiiv.org</a>
+                <a href="mailto:chase@archiiv.org"
+                    class="text-purple-400 hover:text-purple-300 transition-colors">chase@archiiv.org</a>
             </p>
         </div>
     </footer>
 
     <!-- watch later modal -->
-    <div x-show="showWatchLater" 
-         class="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-90 flex items-start justify-center"
-         @click.away="showWatchLater = false"
-         x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="opacity-0"
-         x-transition:enter-end="opacity-100"
-         x-transition:leave="transition ease-in duration-200"
-         x-transition:leave-start="opacity-100"
-         x-transition:leave-end="opacity-0">
+    <div x-show="showWatchLater"
+        class="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-90 flex items-start justify-center"
+        @click.away="showWatchLater = false" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0">
         <div class="bg-gray-900 rounded-lg w-full max-w-4xl mt-20 modal-animation">
             <div class="p-6 border-b border-gray-800">
                 <div class="flex items-center justify-between">
                     <h2 class="text-2xl font-bold">Watch Later</h2>
                     <div class="flex items-center space-x-4">
-                        <button @click="showClearConfirm = true" 
-                                x-show="watchLaterItems.length > 0"
-                                class="text-gray-400 hover:text-red-500 flex items-center space-x-2 transition-colors duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        <button @click="showClearConfirm = true" x-show="watchLaterItems.length > 0"
+                            class="text-gray-400 hover:text-red-500 flex items-center space-x-2 transition-colors duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg>
                             <span>Clear All</span>
                         </button>
                         <button @click="showWatchLater = false" class="text-gray-500 hover:text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                     </div>
@@ -947,20 +1058,20 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     <template x-for="item in watchLaterItems" :key="item.id">
                         <div class="relative bg-gray-800 rounded-lg overflow-hidden">
-                            <a :href="'watch.html?id=' + item.id + '&type=' + item.type"
-                               class="block">
-                                <img :src="'https://image.tmdb.org/t/p/w500' + item.poster_path" 
-                                     :alt="item.title || item.name"
-                                     class="w-full h-48 object-cover">
+                            <a :href="'watch.html?id=' + item.id + '&type=' + item.type" class="block">
+                                <img :src="'https://image.tmdb.org/t/p/w500' + item.poster_path"
+                                    :alt="item.title || item.name" class="w-full h-48 object-cover">
                                 <div class="p-4">
                                     <h3 class="font-medium" x-text="item.title || item.name"></h3>
-                                    <p class="text-gray-400 text-sm mt-1" x-text="'⭐ ' + (item.vote_average || 'N/A') + '/10'"></p>
+                                    <p class="text-gray-400 text-sm mt-1"
+                                        x-text="'⭐ ' + (item.vote_average || 'N/A') + '/10'"></p>
                                 </div>
                             </a>
                             <button @click="toggleWatchLater(item)"
-                                    class="absolute top-2 right-2 p-2 bg-gray-900 bg-opacity-75 rounded-full hover:bg-purple-600 transition-all duration-300 text-purple-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+                                class="absolute top-2 right-2 p-2 bg-gray-900 bg-opacity-75 rounded-full hover:bg-purple-600 transition-all duration-300 text-purple-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z" />
                                 </svg>
                             </button>
                         </div>
@@ -971,31 +1082,32 @@
     </div>
 
     <!-- clear confirmation modal -->
-    <div x-show="showClearConfirm" 
-         class="fixed inset-0 z-[60] overflow-auto bg-black bg-opacity-90 flex items-center justify-center"
-         @click.away="showClearConfirm = false"
-         x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="opacity-0 transform scale-95"
-         x-transition:enter-end="opacity-100 transform scale-100"
-         x-transition:leave="transition ease-in duration-200"
-         x-transition:leave-start="opacity-100 transform scale-100"
-         x-transition:leave-end="opacity-0 transform scale-95">
+    <div x-show="showClearConfirm"
+        class="fixed inset-0 z-[60] overflow-auto bg-black bg-opacity-90 flex items-center justify-center"
+        @click.away="showClearConfirm = false" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100"
+        x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform scale-100"
+        x-transition:leave-end="opacity-0 transform scale-95">
         <div class="bg-gray-900 rounded-lg w-full max-w-md p-6 modal-animation">
             <div class="text-center">
-                <div class="w-16 h-16 rounded-full bg-red-500 bg-opacity-10 mx-auto flex items-center justify-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                <div
+                    class="w-16 h-16 rounded-full bg-red-500 bg-opacity-10 mx-auto flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                     </svg>
                 </div>
                 <h3 class="text-xl font-bold mb-2">Clear Watch Later List?</h3>
-                <p class="text-gray-400 mb-6">This action cannot be undone. Are you sure you want to remove all items from your watch later list?</p>
+                <p class="text-gray-400 mb-6">This action cannot be undone. Are you sure you want to remove all items
+                    from your watch later list?</p>
                 <div class="flex space-x-3 justify-center">
-                    <button @click="showClearConfirm = false" 
-                            class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors duration-300">
+                    <button @click="showClearConfirm = false"
+                        class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors duration-300">
                         Cancel
                     </button>
-                    <button @click="doClearWatchLater()" 
-                            class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors duration-300">
+                    <button @click="doClearWatchLater()"
+                        class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors duration-300">
                         Clear All
                     </button>
                 </div>
@@ -1126,7 +1238,7 @@
 
                 toggleFavorite(item) {
                     if (!item) return;
-                    
+
                     const index = this.favorites.findIndex(f => f.id === item.id);
                     if (index === -1) {
                         this.favorites.push({
@@ -1170,7 +1282,7 @@
                         const urlParams = new URLSearchParams(window.location.search);
                         const newContentId = urlParams.get('id');
                         const newContentType = urlParams.get('type')?.toLowerCase();
-                        
+
                         if (newContentId !== this.contentId || newContentType !== this.contentType) {
                             this.contentId = newContentId;
                             this.contentType = newContentType;
@@ -1186,14 +1298,14 @@
                     const baseUrl = 'https://api.themoviedb.org/3';
                     const language = localStorage.getItem('selectedLanguage') || 'en';
                     const url = `${baseUrl}/${this.contentType}/${this.contentId}?api_key=${this.apiKey}&language=${language}&append_to_response=credits,similar,videos,reviews,release_dates,keywords,images`;
-                    
+
                     try {
                         const response = await fetch(url);
                         if (!response.ok) {
                             throw new Error(`HTTP error! status: ${response.status}`);
                         }
                         const data = await response.json();
-                        
+
                         // Fetch images separately to ensure we get all available logos
                         const imagesUrl = `${baseUrl}/${this.contentType}/${this.contentId}/images?api_key=${this.apiKey}`;
                         const imagesResponse = await fetch(imagesUrl);
@@ -1201,36 +1313,36 @@
                             throw new Error(`HTTP error! status: ${imagesResponse.status}`);
                         }
                         const imagesData = await imagesResponse.json();
-                        
+
                         // Update the content data
                         this.$nextTick(() => {
                             this.content = {
                                 ...data,
                                 images: imagesData
                             };
-                            
+
                             // Process content warnings and other data
                             this.processContentData();
-                            
+
                             // Load additional data for TV shows
                             if (this.isShow) {
-                                this.seasons = Array.from({length: data.number_of_seasons}, (_, i) => i + 1);
+                                this.seasons = Array.from({ length: data.number_of_seasons }, (_, i) => i + 1);
                                 this.updateEpisodes();
                             }
-                            
+
                             // Process videos, reviews, and similar content
                             if (data.videos?.results) {
                                 this.videos = data.videos.results.filter(v => v.site === 'YouTube' && v.type === 'Trailer');
                             }
-                            
+
                             if (data.reviews?.results) {
                                 this.reviews = data.reviews.results;
                             }
-                            
+
                             if (data.similar?.results) {
                                 this.similarContent = data.similar.results.slice(0, 6);
                             }
-                            
+
                             this.loading = false;
                         });
                     } catch (error) {
@@ -1241,7 +1353,7 @@
 
                 processContentData() {
                     if (!this.content) return;
-                    
+
                     const containsKeywords = (text, keywords) => {
                         if (!text) return false;
                         const lowercaseText = text.toLowerCase();
@@ -1251,10 +1363,10 @@
                     const overview = this.content.overview?.toLowerCase() || '';
                     const genres = this.content.genres?.map(g => g.name.toLowerCase()) || [];
                     const keywords = [
-                        ...(this.content.keywords?.keywords || []), 
+                        ...(this.content.keywords?.keywords || []),
                         ...(this.content.keywords?.results || [])
                     ].map(k => k.name.toLowerCase());
-                    
+
                     // Process content ratings
                     if (this.content.release_dates?.results) {
                         const usRating = this.content.release_dates.results.find(r => r.iso_3166_1 === 'US');
@@ -1266,29 +1378,29 @@
 
                     // Process content warnings
                     const violenceKeywords = ['violence', 'violent', 'gore', 'bloody', 'blood', 'murder', 'kill', 'death', 'torture', 'fight', 'combat', 'war', 'brutal', 'massacre', 'slaughter', 'horror'];
-                    this.content.violence = containsKeywords(overview, violenceKeywords) || 
-                                          genres.some(g => ['horror', 'war', 'action'].includes(g)) ||
-                                          keywords.some(k => violenceKeywords.some(vk => k.includes(vk)));
+                    this.content.violence = containsKeywords(overview, violenceKeywords) ||
+                        genres.some(g => ['horror', 'war', 'action'].includes(g)) ||
+                        keywords.some(k => violenceKeywords.some(vk => k.includes(vk)));
 
                     const languageKeywords = ['profanity', 'swearing', 'cursing', 'explicit language', 'strong language', 'vulgar'];
                     this.content.profanity = containsKeywords(overview, languageKeywords) ||
-                                           keywords.some(k => languageKeywords.some(lk => k.includes(lk)));
+                        keywords.some(k => languageKeywords.some(lk => k.includes(lk)));
 
                     const substanceKeywords = ['drug', 'alcohol', 'substance', 'addiction', 'smoking', 'drunk', 'intoxicated'];
                     this.content.substances = containsKeywords(overview, substanceKeywords) ||
-                                            keywords.some(k => substanceKeywords.some(sk => k.includes(sk)));
+                        keywords.some(k => substanceKeywords.some(sk => k.includes(sk)));
 
                     const sexualKeywords = ['sexual', 'sex', 'nudity', 'erotic', 'suggestive', 'mature themes'];
                     this.content.suggestive = containsKeywords(overview, sexualKeywords) ||
-                                            keywords.some(k => sexualKeywords.some(sk => k.includes(sk)));
+                        keywords.some(k => sexualKeywords.some(sk => k.includes(sk)));
 
                     const flashingKeywords = ['strobe', 'flashing', 'epilepsy', 'seizure', 'photosensitive'];
                     this.content.flashing = containsKeywords(overview, flashingKeywords) ||
-                                          keywords.some(k => flashingKeywords.some(fk => k.includes(fk)));
+                        keywords.some(k => flashingKeywords.some(fk => k.includes(fk)));
 
                     if (!this.content.adult) {
-                        this.content.adult = genres.includes('thriller') && 
-                                           (this.content.violence || this.content.suggestive || this.content.substances);
+                        this.content.adult = genres.includes('thriller') &&
+                            (this.content.violence || this.content.suggestive || this.content.substances);
                     }
                 },
 
@@ -1350,7 +1462,7 @@
 
                     const currentSource = this.availableSources[currentIndex];
                     const isFrench = currentSource.isFrench;
-                    
+
                     let nextIndex = (currentIndex + 1) % this.availableSources.length;
                     while (nextIndex !== currentIndex) {
                         if (this.availableSources[nextIndex].isFrench === isFrench) {
@@ -1389,15 +1501,15 @@
                             this.isShow ? 'tv' : 'movie',
                             params
                         );
-                        
+
                         const corsProxy = 'https://api.allorigins.win/raw?url=';
                         const proxyUrl = corsProxy + encodeURIComponent(apiUrl);
-                        
+
                         const playerContainer = document.getElementById('player-container');
                         if (playerContainer) {
                             playerContainer.innerHTML = '<div class="absolute inset-0 flex items-center justify-center bg-gray-900"><div class="text-white">Chargement de la vidéo...</div></div>';
                         }
-                        
+
                         fetch(proxyUrl)
                             .then(response => {
                                 if (!response.ok) {
@@ -1408,31 +1520,31 @@
                             .then(data => {
                                 if (data.type === 'success' && data.data && data.data.items && data.data.items.length > 0) {
                                     const firstSource = data.data.items[0];
-                                    
+
                                     if (firstSource.type === 'file' || firstSource.type === 'hls') {
                                         this.currentVideoUrl = firstSource.url;
-                                        
+
                                         this.$nextTick(() => {
                                             const video = document.createElement('video');
                                             video.className = 'absolute top-0 left-0 w-full h-full';
                                             video.controls = true;
                                             video.autoplay = true;
                                             video.preload = 'auto';
-                                            
+
                                             video.onerror = () => {
                                                 console.error('Video error:', video.error);
                                                 if (playerContainer) {
                                                     playerContainer.innerHTML = '<div class="absolute inset-0 flex items-center justify-center bg-gray-900"><div class="text-white">Erreur lors du chargement de la vidéo. Veuillez essayer une autre source.</div></div>';
                                                 }
                                             };
-                                            
+
                                             if (firstSource.type === 'hls') {
                                                 if (Hls.isSupported()) {
                                                     const hls = new Hls({
                                                         debug: false,
                                                         enableWorker: true
                                                     });
-                                                    
+
                                                     hls.on(Hls.Events.ERROR, (event, data) => {
                                                         console.error('HLS error:', data);
                                                         if (data.fatal) {
@@ -1449,7 +1561,7 @@
                                                             }
                                                         }
                                                     });
-                                                    
+
                                                     hls.loadSource(firstSource.url);
                                                     hls.attachMedia(video);
                                                     hls.on(Hls.Events.MANIFEST_PARSED, () => {
@@ -1467,7 +1579,7 @@
                                             } else {
                                                 video.src = firstSource.url;
                                             }
-                                            
+
                                             if (playerContainer) {
                                                 playerContainer.innerHTML = '';
                                                 playerContainer.appendChild(video);
@@ -1501,7 +1613,7 @@
 
                         if (newUrl !== this.currentVideoUrl) {
                             this.currentVideoUrl = newUrl;
-                            
+
                             this.$nextTick(() => {
                                 const playerContainer = document.getElementById('player-container');
                                 if (playerContainer) {
@@ -1512,10 +1624,10 @@
                                     iframe.frameBorder = '0';
                                     iframe.scrolling = 'no';
                                     iframe.allowFullscreen = true;
-                                    
+
                                     iframe.addEventListener('error', () => this.checkProviderStatus());
                                     iframe.addEventListener('load', () => this.handleProviderLoad());
-                                    
+
                                     playerContainer.appendChild(iframe);
                                 }
                             });
@@ -1540,7 +1652,7 @@
                         const response = await fetch(url);
                         const data = await response.json();
                         this.seasonData = data;
-                        this.episodes = Array.from({length: data.episodes.length}, (_, i) => i + 1);
+                        this.episodes = Array.from({ length: data.episodes.length }, (_, i) => i + 1);
                         this.selectedEpisode = 1;
                         this.updateVideoUrl();
                     } catch (error) {
@@ -1589,7 +1701,7 @@
 
                     try {
                         const corsProxy = 'https://api.allorigins.win/raw?url=';
-                        
+
                         let searchQuery = contentTitle;
                         if (releaseYear) {
                             searchQuery += ` ${releaseYear}`;
@@ -1597,22 +1709,22 @@
                         if (this.isShow) {
                             searchQuery += ` S${String(this.selectedTorrentSeason).padStart(2, '0')}`;
                         }
-                        
+
                         const targetUrl = `https://cloudtorrents.com/search?query=${encodeURIComponent(searchQuery)}&ordering=-se`;
                         console.log('Fetching torrents from:', targetUrl);
-                        
+
                         const response = await fetch(corsProxy + encodeURIComponent(targetUrl));
                         if (!response.ok) {
                             throw new Error(`HTTP error! status: ${response.status}`);
                         }
                         const html = await response.text();
-                        
+
                         const parser = new DOMParser();
                         const doc = parser.parseFromString(html, 'text/html');
-                        
+
                         const rows = doc.querySelectorAll('tbody tr');
                         console.log('Found rows:', rows.length);
-                        
+
                         const qualityTypeMap = new Map();
 
                         for (const row of rows) {
@@ -1620,20 +1732,20 @@
                             if (!titleElement) continue;
 
                             const title = titleElement.textContent.trim();
-                            
+
                             if (!this.verifyTorrentTitle(title, contentTitle, releaseYear)) continue;
 
                             const magnetElement = row.querySelector('a[href^="magnet:"]');
                             if (!magnetElement) continue;
 
                             const magnetLink = magnetElement.href;
-                            
+
                             let quality = 'N/A';
                             const qualityMatch = title.match(/\b(720p|1080p|2160p|4K)\b/i);
                             if (qualityMatch) {
                                 quality = qualityMatch[1].toUpperCase();
                             }
-                            
+
                             let type = 'N/A';
                             const typeMatch = title.match(/\b(BluRay|WEBDL|WEB-DL|WEBRip|HDRip|BRRip|DVDRip)\b/i);
                             if (typeMatch) {
@@ -1653,7 +1765,7 @@
                             };
 
                             const key = `${quality}-${type}`;
-                            
+
                             if (!qualityTypeMap.has(key) || qualityTypeMap.get(key).seeders < seeders) {
                                 qualityTypeMap.set(key, torrent);
                             }
@@ -1680,26 +1792,27 @@
                 verifyTorrentTitle(torrentTitle, contentTitle, releaseYear) {
                     const cleanTorrentTitle = torrentTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
                     const cleanContentTitle = contentTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
-                    
+
                     if (!cleanTorrentTitle.includes(cleanContentTitle)) {
                         return false;
                     }
-                    
+
                     if (releaseYear && !torrentTitle.includes(releaseYear)) {
                         return false;
                     }
-                    
+
                     if (this.isShow) {
                         const seasonPattern = new RegExp(`S${String(this.selectedTorrentSeason).padStart(2, '0')}`, 'i');
                         if (!seasonPattern.test(torrentTitle)) {
                             return false;
                         }
                     }
-                    
+
                     return true;
                 }
             }
         }
     </script>
 </body>
-</html> 
+
+</html>
