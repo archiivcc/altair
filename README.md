@@ -95,7 +95,7 @@ You can freely host this website yourself. All we ask is that you provide proper
   
 <p>Made with ❤️ by <a href="https://github.com/archiivv">archiiv</a></p>
 <p>
-  <a href="mailto:chase@archiiv.org">chase@archiiv.org</a>
+  <a href="mailto:chase@archiiv.org">chase@archiiv.org</a></br>
   <a href="https://github.com/ambr0sial/nova">original repository entitled "nova"</a>
 </p>
   
