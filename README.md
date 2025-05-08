@@ -3,8 +3,8 @@
   ![Altair](logo.png)
   <h1>Altair ☄️</h1>
   <p>
-    <a href="https://github.com/archiivcc/altair/stargazers">
-      <img src="https://img.shields.io/github/stars/archiivcc/altair?color=%23A855F7&logo=github&style=for-the-badge" alt="Stars">
+    <a href="https://github.com/molluskt/altair/stargazers">
+      <img src="https://img.shields.io/github/stars/molluskt/altair?color=%23A855F7&logo=github&style=for-the-badge" alt="Stars">
     </a>
   </p>
   <h3>✨ Click, watch, enjoy. ✨</h3>
@@ -82,11 +82,11 @@ You can freely host this website yourself. All we ask is that you provide proper
 ## ⭐ Star History
 
 <div align="center">
-<a href="https://star-history.com/#archiivcc/altair&Timeline">
+<a href="https://star-history.com/#molluskt/altair&Timeline">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=archiivcc/altair&type=Timeline&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=archiivcc/altair&type=Timeline" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=archiivcc/altair&type=Timeline" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=molluskt/altair&type=Timeline&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=molluskt/altair&type=Timeline" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=molluskt/altair&type=Timeline" />
   </picture>
 </a>
 </div>
