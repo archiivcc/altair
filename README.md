@@ -70,6 +70,7 @@ Filtered search for better content discovery
 - Favoriting System
 - Non-obtrusive ui
 - No DMCA'd content (yet 🙏)
+- Mobile Settings 😎
 
 ## 🤝 Contributing
 
