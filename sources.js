@@ -99,15 +99,6 @@ const availableSources = [
         }
     },
     {
-        id: 'vidsrcsu',
-        name: 'VidSrcSU',
-        isFrench: false,
-        urls: {
-            movie: 'https://vidsrc.su/embed/movie/{id}',
-            tv: 'https://vidsrc.su/embed/tv/{id}/{season}/{episode}'
-        }
-    },
-    {
         id: 'vidsrcxyz',
         name: 'VidSrcXYZ',
         isFrench: false,
@@ -168,15 +159,6 @@ const availableSources = [
         urls: {
             movie: 'https://embed.smashystream.com/playere.php?tmdb={id}',
             tv: 'https://embed.smashystream.com/playere.php?tmdb={id}&season={season}&episode={episode}'
-        }
-    },
-    {
-        id: 'flicky',
-        name: 'Flicky',
-        isFrench: false,
-        urls: {
-            movie: 'https://flicky.host/embed/movie/?id={id}',
-            tv: 'https://flicky.host/embed/tv/?id={id}/{season}/{episode}'
         }
     },
     {
