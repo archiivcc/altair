@@ -9,13 +9,72 @@
   </p>
   <h3>✨ Click, watch, enjoy. ✨</h3>
   
-  <p><strong>Altair itself is ad-free, but it happens that providers insert their own ads. For the best experience, I recommend using <a href="https://ublockorigin.com/">uBlock Origin</a>.</strong></p>
+  <p><strong>Altair itself is ad-free, but it happens that some providers insert their own ads. For the best experience, I recommend using <a href="https://ublockorigin.com/">uBlock Origin</a>.</strong></p>
   
   <p align="center">
     <img alt="Altair Screenshot" src="https://iili.io/2iL3qAB.png" width="700">
   </p>
   <br>
 </div>
+
+## ☄️ What do we offer that Nova doesn't?
+
+<div align="center">
+<table>
+<tr>
+<td>
+
+### 🖥️ No Obtrustive UI
+In the original, too much self</br>
+promotion was embedded into the site.</br>
+Now it is really clean.
+
+</td>
+<td>
+
+### 📱 Actual Mobile Support
+In the original, mobile support</br>
+was spotty at best, and we</br>
+have and will continue to fix that.
+
+</td>
+</tr>
+<tr>
+<td>
+
+### 🤩 A Favoriting System
+Easy favoriting system where</br>
+favorite movies show on the</br>
+home page.
+
+</td>
+<td>
+
+### 📖 Active Development
+This website is getting updates</br>
+nearly every day, and you can see</br>
+the development map below.
+
+</td>
+</tr>
+</table>
+</div>
+</td><br><br>
+
+
+## 👔 Development Map
+
+- Stage 1 (COMPLETED)
+  - Remove all self-advertising from website ✅
+  - Add any sources I can find ✅
+  - Settings: Mobile Support ✅
+  - Home page rework ✅<br><br>
+- Stage 2 
+  - Add anime streaming <?>
+  - Add ppv.wtf live sports (+ switchable sources for live sports)
+  - Add customizable themes
+  - Create an embed version of the site (*./embed/ and then whatever content, allow for switching sources within player)
+  - Add more foreign language embed websites<br><br>
 
 ## ⚡ Features
 
@@ -62,23 +121,15 @@ Filtered search for better content discovery
 </td>
 </tr>
 </table>
-</div>
-
-
-## What We Offer That Nova Doesn't
-
-- Favoriting System
-- Non-obtrusive ui
-- No DMCA'd content (yet 🙏)
-- Mobile Settings 😎
+</div></br>
 
 ## 🤝 Contributing
 
-Contributions are always welcome! Feel free to open pull requests to improve Altair.
+Contributions are always welcome! Feel free to open pull requests to improve Altair.</br>
 
 ## 📝 License
 
-You can freely host this website yourself. All we ask is that you provide proper credits by linking to this repository, and the repository before this.
+You can freely host this website yourself. All we ask is that you provide proper credits by linking to this repository, and the repository before this.</br>
 
 ## ⭐ Star History
 
@@ -90,7 +141,7 @@ You can freely host this website yourself. All we ask is that you provide proper
     <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=molluskt/altair&type=Timeline" />
   </picture>
 </a>
-</div>
+</div><br>
 
 <div align="center">
   
