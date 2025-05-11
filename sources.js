@@ -9,6 +9,15 @@ const availableSources = [
         }
     },
     {
+        id: 'streamflix',
+        name: 'StreamFlix',
+        isFrench: false,
+        urls: {
+            movie: 'https://watch.streamflix.one/movie/{id}}/watch?server=1',
+            tv: 'https://watch.streamflix.one/tv/{id}}/watch?server=1&season={season}}&episode={episode}}'
+        }
+    },
+    {
         id: 'nebula',
         name: 'NebulaFlix',
         isFrench: false,
@@ -205,5 +214,5 @@ const availableSources = [
             movie: 'https://vidify.top/embed/movie/{id}',
             tv: 'https://vidify.top/embed/tv/{id}/{season}/{episode}'
         }
-    }
+    },
 ];
