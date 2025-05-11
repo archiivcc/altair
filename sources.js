@@ -72,15 +72,6 @@ const availableSources = [
         }
     },
     {
-        id: 'frembed',
-        name: 'Frembed',
-        isFrench: true,
-        urls: {
-            movie: 'https://frembed.cc/api/film.php?id={id}',
-            tv: 'https://frembed.cc/api/serie.php?id={id}&sa={season}&epi={episode}'
-        }
-    },
-    {
         id: 'moviesapi',
         name: 'MoviesAPI',
         isFrench: false,
@@ -240,6 +231,24 @@ const availableSources = [
         urls: {
             movie: 'https://vidify.top/embed/movie/{id}',
             tv: 'https://vidify.top/embed/tv/{id}/{season}/{episode}'
+        }
+    },
+    {
+        id: 'frembed',
+        name: 'Frembed',
+        isFrench: true,
+        urls: {
+            movie: 'https://frembed.cc/api/film.php?id={id}',
+            tv: 'https://frembed.cc/api/serie.php?id={id}&sa={season}&epi={episode}'
+        }
+    },
+    {
+        id: 'cinepulse',
+        name: 'Cinepulse',
+        isFrench: true,
+        urls: {
+            movie: 'https://cinepulse.fr/watch/{id}',
+            tv: 'https://cinepulse.fr/watch/{id}/{season}/{episode}'
         }
     },
 ];
