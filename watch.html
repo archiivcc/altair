@@ -1634,17 +1634,37 @@
                                 const playerContainer = document.getElementById('player-container');
                                 if (playerContainer) {
                                     playerContainer.innerHTML = '';
+
                                     const iframe = document.createElement('iframe');
                                     iframe.src = this.currentVideoUrl;
                                     iframe.className = 'absolute top-0 left-0 w-full h-full';
                                     iframe.frameBorder = '0';
                                     iframe.scrolling = 'no';
                                     iframe.allowFullscreen = true;
+                                    iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-presentation');
 
-                                    iframe.addEventListener('error', () => this.checkProviderStatus());
-                                    iframe.addEventListener('load', () => this.handleProviderLoad());
+                                    const overlay = document.createElement('div');
+                                    overlay.className = 'absolute inset-0 z-10';
+                                    overlay.style.pointerEvents = 'none';
 
                                     playerContainer.appendChild(iframe);
+                                    playerContainer.appendChild(overlay);
+
+                                    iframe.addEventListener('load', () => {
+                                        overlay.addEventListener('mouseover', function () {
+                                            this.style.pointerEvents = 'auto';
+                                        });
+                                        overlay.addEventListener('mouseout', function () {
+                                            this.style.pointerEvents = 'none';
+                                        });
+                                        overlay.addEventListener('click', function (e) {
+                                            if (e.target.tagName === 'A' || e.target.closest('a')) {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                console.log('Blocked potential redirect');
+                                            }
+                                        });
+                                    });
                                 }
                             });
                         }
