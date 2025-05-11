@@ -251,13 +251,4 @@ const availableSources = [
             tv: 'https://frembed.cc/api/serie.php?id={id}&sa={season}&epi={episode}'
         }
     },
-    {
-        id: 'cinepulse',
-        name: 'Cinepulse',
-        isFrench: true,
-        urls: {
-            movie: 'https://cinepulse.fr/watch/{id}',
-            tv: 'https://cinepulse.fr/watch/{id}/{season}/{episode}'
-        }
-    },
 ];
