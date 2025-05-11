@@ -27,6 +27,42 @@ const availableSources = [
         }
     },
     {
+        id: 'vidjoy',
+        name: 'VidJoy',
+        isFrench: false,
+        urls: {
+            movie: 'https://vidjoy.pro/embed/movie/{id}',
+            tv: 'https://vidjoy.pro/embed/tv/{id}}/{season}/{episode}'
+        }
+    },
+    {
+        id: 'vidzee',
+        name: 'VidZee',
+        isFrench: false,
+        urls: {
+            movie: 'https://vidzee.wtf/movie/movie.php?id={id}',
+            tv: 'https://vidzee.wtf/tv/tv.php?id={id}&season={season}&episode={episode}'
+        }
+    },
+    {
+        id: 'spenflix',
+        name: 'Spenflix',
+        isFrench: false,
+        urls: {
+            movie: 'https://spencerdevs.xyz/movie/{id}',
+            tv: 'https://spencerdevs.xyz/tv/{id}/{season}/{episode}'
+        }
+    },
+    {
+        id: 'betaspenflix',
+        name: 'Beta Spenflix',
+        isFrench: false,
+        urls: {
+            movie: 'https://beta.spencerdevs.xyz/movie/{id}',
+            tv: 'https://beta.spencerdevs.xyz/tv/{id}/{season}/{episode}'
+        }
+    },
+    {
         id: 'vidora',
         name: 'Vidora',
         isFrench: false,
