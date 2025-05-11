@@ -54,15 +54,6 @@ const availableSources = [
         }
     },
     {
-        id: 'betaspenflix',
-        name: 'Beta Spenflix',
-        isFrench: false,
-        urls: {
-            movie: 'https://beta.spencerdevs.xyz/movie/{id}',
-            tv: 'https://beta.spencerdevs.xyz/tv/{id}/{season}/{episode}'
-        }
-    },
-    {
         id: 'vidora',
         name: 'Vidora',
         isFrench: false,
