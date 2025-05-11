@@ -65,10 +65,10 @@ the development map below.
 ## 👔 Development Map
 
 - Stage 1 (COMPLETED)
-  - Remove all self-advertising from website ✅
-  - Add any sources I can find ✅
-  - Settings: Mobile Support ✅
-  - Home page rework ✅<br><br>
+  - Remove all self-advertising from website (done)
+  - Add any sources I can find (done)
+  - Settings: Mobile Support (done)
+  - Home page rework (done)<br><br>
 - Stage 2 
   - Add anime streaming <?>
   - Add ppv.wtf live sports (+ switchable sources for live sports)
