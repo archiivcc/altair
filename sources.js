@@ -9,6 +9,15 @@ const availableSources = [
         }
     },
     {
+        id: 'nebula',
+        name: 'NebulaFlix',
+        isFrench: false,
+        urls: {
+            movie: 'https://nebulaflix.stream/movie?mt={id}&server=1',
+            tv: 'https://nebulaflix.stream/show?st={id}&season={season}&episode={episode}&server=1'
+        }
+    },
+    {
         id: 'vidora',
         name: 'Vidora',
         isFrench: false,
