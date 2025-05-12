@@ -177,6 +177,95 @@
         .settings-icon:hover {
             transform: rotate(180deg);
         }
+
+        .theater-mode-container {
+            transition: all 0.3s ease;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .theater-mode-active {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            grid-column: 1 / -1;
+        }
+
+        .theater-mode-active #player-container {
+            position: relative;
+            padding-top: 0 !important;
+            padding-bottom: 56.25% !important;
+            height: 0 !important;
+            max-height: none !important;
+        }
+
+        .theater-mode-active iframe,
+        .theater-mode-active video {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
+        }
+
+        .theater-mode-active .bg-gray-800 {
+            background-color: rgba(31, 41, 55, 0.9);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+
+            .content-grid.theater-mode {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        @media (max-height: 700px) {
+            .theater-mode-active #player-container {
+                padding-bottom: 50vh !important;
+            }
+        }
+
+        @media (max-height: 500px) {
+            .theater-mode-active #player-container {
+                padding-bottom: 40vh !important;
+            }
+        }
+
+        body.theater-mode-enabled nav.fixed {
+            transform: translateY(-100%) !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transition: all 0.3s ease !important;
+        }
+
+        body.theater-mode-enabled:hover nav.fixed {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+
+        body.theater-mode-enabled::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            z-index: 49;
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -314,9 +403,11 @@
 
         <!-- main content -->
         <div class="container mx-auto px-4 md:px-6 py-6 md:py-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 content-grid"
+                :class="{'theater-mode': theaterMode}">
                 <!-- left column (video player and controls) -->
-                <div class="lg:col-span-2 space-y-6">
+                <div class="lg:col-span-2 space-y-6 theater-mode-container"
+                    :class="{'theater-mode-active': theaterMode}">
                     <!-- video player -->
                     <div class="bg-gray-800 rounded-lg overflow-hidden">
                         <div class="relative pt-[56.25%]" id="player-container">
@@ -367,22 +458,33 @@
                                     x-show="content?.runtime || content?.episode_run_time">
                                     <span>If you start now, it'll end at </span>
                                     <span x-text="(() => {
-                                        const runtime = content?.runtime || content?.episode_run_time?.[0] || 0;
-                                        const now = new Date();
-                                        const endTime = new Date(now.getTime() + runtime * 60000);
-                                        return endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                                    })()"></span>
+                                const runtime = content?.runtime || content?.episode_run_time?.[0] || 0;
+                                const now = new Date();
+                                const endTime = new Date(now.getTime() + runtime * 60000);
+                                return endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                            })()"></span>
                                 </div>
-                                <button @click="toggleFavorite(content)"
-                                    class="p-1.5 md:p-2 bg-gray-700 rounded-full hover:bg-purple-600 transition-colors duration-300"
-                                    :class="isInFavorites(content) ? 'text-purple-400' : 'text-white'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5"
-                                        :fill="isInFavorites(content) ? 'currentColor' : 'none'" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                                    </svg>
-                                </button>
+                                <div class="flex space-x-2">
+                                    <button @click="toggleTheaterMode()"
+                                        class="p-1.5 md:p-2 bg-gray-700 rounded-full hover:bg-purple-600 transition-colors duration-300"
+                                        :class="theaterMode ? 'text-purple-400' : 'text-white'">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 8V6a2 2 0 012-2h12a2 2 0 012 2v2M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M6 12h.01M18 12h.01" />
+                                        </svg>
+                                    </button>
+                                    <button @click="toggleFavorite(content)"
+                                        class="p-1.5 md:p-2 bg-gray-700 rounded-full hover:bg-purple-600 transition-colors duration-300"
+                                        :class="isInFavorites(content) ? 'text-purple-400' : 'text-white'">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5"
+                                            :fill="isInFavorites(content) ? 'currentColor' : 'none'" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -606,7 +708,7 @@
                 </div>
 
                 <!-- right column (content details) -->
-                <div class="space-y-6">
+                <div class="space-y-6" :class="{'mt-6': theaterMode}">
                     <!-- overview -->
                     <div class="bg-gray-800 rounded-lg p-6">
                         <div class="flex items-center justify-between section-header"
@@ -1251,6 +1353,45 @@
                 similarContent: [],
                 loading: true,
                 favorites: [],
+                theaterMode: false,
+
+                toggleTheaterMode() {
+                    this.theaterMode = !this.theaterMode;
+                    localStorage.setItem('theaterMode', this.theaterMode ? 'true' : 'false');
+
+                    if (this.theaterMode) {
+                        document.body.classList.add('theater-mode-enabled');
+
+                        const navbar = document.querySelector('nav.fixed');
+                        if (navbar) {
+                            navbar.style.cssText = `
+                transition: none !important;
+                transform: translateY(-100%) !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+            `;
+
+                            setTimeout(() => {
+                                navbar.style.transition = 'all 0.3s ease !important';
+                            }, 50);
+                        }
+                    } else {
+                        document.body.classList.remove('theater-mode-enabled');
+
+                        const navbar = document.querySelector('nav.fixed');
+                        if (navbar) {
+                            navbar.style.cssText = `
+                transform: translateY(0) !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+            `;
+                        }
+                    }
+
+                    setTimeout(() => {
+                        window.dispatchEvent(new Event('resize'));
+                    }, 100);
+                },
 
                 toggleFavorite(item) {
                     if (!item) return;
@@ -1272,11 +1413,34 @@
                 },
 
                 async init() {
+                    this.theaterMode = localStorage.getItem('theaterMode') === 'true';
+
+                    if (this.theaterMode) {
+                        document.body.classList.add('theater-mode-enabled');
+
+                        const navbar = document.querySelector('nav.fixed');
+                        if (navbar) {
+                            navbar.style.cssText = `
+                transform: translateY(-100%) !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+            `;
+                        }
+                    }
+
                     const savedItems = localStorage.getItem('watchLater');
                     if (savedItems) {
                         this.watchLaterItems = JSON.parse(savedItems);
                         this.watchLaterCount = this.watchLaterItems.length;
                     }
+
+                    window.addEventListener('keydown', (e) => {
+                        if (e.key === 't' && !e.ctrlKey && !e.altKey &&
+                            !(e.target instanceof HTMLInputElement) &&
+                            !(e.target instanceof HTMLTextAreaElement)) {
+                            this.toggleTheaterMode();
+                        }
+                    });
 
                     // Load favorites from localStorage
                     this.favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
