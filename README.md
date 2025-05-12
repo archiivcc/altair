@@ -16,8 +16,8 @@
   </p>
 
   
-  <p>aHR0cHM6Ly9hbHRhaXIubW9sbHVzay50b3Av</p>
-  <p>aHR0cHM6Ly90bW9sbHVzay5naXRodWIuaW8vYWx0YWlyLw==</p>
+  <p>https://tmollusk.github.io/altair</p>
+  <p>+ another secret domain</p>
   <br>
 </div>
 
