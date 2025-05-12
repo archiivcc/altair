@@ -317,14 +317,7 @@
                 x-transition:leave-start="opacity-100 transform translate-y-0"
                 x-transition:leave-end="opacity-0 transform -translate-y-2" class="md:hidden mt-4 pb-4">
                 <div class="flex flex-col space-y-4">
-                    <a href="/" class="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">Browse</a>
-                    <button @click="showWatchLater = true; mobileMenu = false"
-                        class="flex items-center justify-between px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">
-                        <span>Watch Later</span>
-                        <span x-show="watchLaterCount > 0"
-                            class="bg-purple-600 text-white text-xs flex items-center justify-center rounded-full w-6 h-6"
-                            x-text="watchLaterCount"></span>
-                    </button>
+                    <a href="/" class="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors">Home</a>
                 </div>
             </div>
         </div>
