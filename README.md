@@ -74,7 +74,7 @@ the development map below.
   - Settings: Mobile Support (done)
   - Home page rework (done)<br><br>
 - Stage 2 
-  - Add anime streaming <?>
+  - Add dedicated anime streaming (?)
   - Add ppv.wtf live sports (+ switchable sources for live sports)
   - Add customizable themes
   - Create an embed version of the site (*./embed/ and then whatever content, allow for switching sources within player)
