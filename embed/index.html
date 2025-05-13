@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Altair Custom Embed</title>
+    <title>Altair</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <style>
@@ -71,8 +71,36 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const container = document.getElementById('container');
-            const urlParams = new URLSearchParams(window.location.search);
-            const embedUrl = urlParams.get('url');
+
+            // Extract URL parameters more reliably
+            function getUrlParams() {
+                const params = {};
+                const decodedUrl = decodeURIComponent(window.location.search);
+
+                // Match url parameter - handles with or without quotes
+                const urlMatch = decodedUrl.match(/[?&]url=(?:"([^"]*)"|'([^']*)'|([^&]*))/);
+                if (urlMatch) {
+                    params.url = urlMatch[1] || urlMatch[2] || urlMatch[3];
+                }
+
+                // Match title parameter - handles with or without quotes
+                const titleMatch = decodedUrl.match(/[?&]title=(?:"([^"]*)"|'([^']*)'|([^&]*))/);
+                if (titleMatch) {
+                    params.title = titleMatch[1] || titleMatch[2] || titleMatch[3];
+                }
+
+                return params;
+            }
+
+            // Get parameters
+            const params = getUrlParams();
+            const embedUrl = params.url;
+            const customTitle = params.title;
+
+            // Set page title if custom title parameter exists
+            if (customTitle) {
+                document.title = customTitle;
+            }
 
             function isValidUrl(string) {
                 try {
@@ -96,10 +124,9 @@
                     videoPlayer.controls = true;
                     videoPlayer.autoplay = false;
                     videoPlayer.src = embedUrl;
-                    videoPlayer.type = `video/${fileExtension}`;
+                    videoPlayer.type = `video/${fileExtension === 'mkv' ? 'x-matroska' : fileExtension}`;
                     container.appendChild(videoPlayer);
                 }
-
                 else {
                     const iframe = document.createElement('iframe');
                     iframe.src = embedUrl;
@@ -108,11 +135,10 @@
                     iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
                     container.appendChild(iframe);
                 }
-
             } else {
                 const errorDiv = document.createElement('div');
                 errorDiv.className = 'error-message';
-                errorDiv.innerHTML = '<h3>Invalid URL</h3><p>Please provide a valid URL to embed using the "url" parameter.</p>';
+                errorDiv.innerHTML = '<h3>URL Required</h3><p>Please provide a valid URL in this format:</p><p>?url="https://example.com"</p><p>You can also add a title:</p><p>?url="https://example.com"&title="My Title"</p>';
                 container.appendChild(errorDiv);
             }
         });
