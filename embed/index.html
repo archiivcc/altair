@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altair Custom Embed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(17, 24, 39);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .embed-container {
+            width: 70%;
+            height: 70vh;
+            padding: 0;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .embed-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            background-color: #1f2937;
+        }
+
+        .error-message {
+            padding: 20px;
+            text-align: center;
+            color: white;
+            background-color: #1f2937;
+            border-radius: 16px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .video-player {
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            background-color: #000;
+            object-fit: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="embed-container" id="container">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.getElementById('container');
+            const urlParams = new URLSearchParams(window.location.search);
+            const embedUrl = urlParams.get('url');
+
+            function isValidUrl(string) {
+                try {
+                    const url = new URL(string);
+                    return url.protocol === 'http:' || url.protocol === 'https:';
+                } catch (_) {
+                    return false;
+                }
+            }
+
+            function getFileExtension(url) {
+                return url.split(/[#?]/)[0].split('.').pop().trim().toLowerCase();
+            }
+
+            if (embedUrl && isValidUrl(embedUrl)) {
+                const fileExtension = getFileExtension(embedUrl);
+
+                if (['mp4', 'webm', 'ogg', 'mkv'].includes(fileExtension)) {
+                    const videoPlayer = document.createElement('video');
+                    videoPlayer.className = 'video-player';
+                    videoPlayer.controls = true;
+                    videoPlayer.autoplay = false;
+                    videoPlayer.src = embedUrl;
+                    videoPlayer.type = `video/${fileExtension}`;
+                    container.appendChild(videoPlayer);
+                }
+
+                else {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = embedUrl;
+                    iframe.className = 'embed-frame';
+                    iframe.allowFullscreen = true;
+                    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                    container.appendChild(iframe);
+                }
+
+            } else {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.innerHTML = '<h3>Invalid URL</h3><p>Please provide a valid URL to embed using the "url" parameter.</p>';
+                container.appendChild(errorDiv);
+            }
+        });
+    </script>
+</body>
+
+</html>
