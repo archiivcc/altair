@@ -477,6 +477,14 @@
                                                 d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                                         </svg>
                                     </button>
+                                    <button @click="toggleWatchLater(item)"
+                                        class="p-1.5 md:p-2 bg-gray-900 bg-opacity-75 rounded-full hover:bg-purple-600 transition-all duration-300"
+                                        :class="isInWatchLater(item) ? 'text-purple-400' : 'text-white'">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z" />
+                                        </svg>
+                                    </button>
                                 </div>
                             </div>
                         </div>
