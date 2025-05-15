@@ -21,6 +21,12 @@
   <br>
 </div>
 
+
+## 🎲 THE OFFICIAL DISCORD!
+
+<a href="https://discord.gg/eQ8ktbzASf">altair discord :)</a>
+
+
 ## ☄️ What do we offer that Nova doesn't?
 
 <div align="center">
